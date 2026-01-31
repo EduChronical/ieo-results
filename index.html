@@ -69,14 +69,21 @@
 
         .header-date {
             opacity: 0.9;
+            white-space: nowrap;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 15px;
+            white-space: nowrap;
         }
 
         .header-links a {
             color: white;
             text-decoration: none;
-            margin-left: 15px;
             font-weight: 500;
             font-size: 11px;
+            white-space: nowrap;
         }
 
         .header-main {
@@ -301,7 +308,7 @@
             width: 100%;
             height: auto;
             display: block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a237e;
             min-height: 200px;
             position: relative;
             overflow: hidden;
@@ -311,6 +318,53 @@
             width: 100%;
             height: auto;
             display: block;
+            object-fit: cover;
+        }
+
+        .ieo-logo-container {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+        }
+
+        .ieo-logo-icon {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .ieo-logo-icon img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .ieo-logo-text {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .ieo-logo-subtext {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            opacity: 0.9;
+            letter-spacing: 1px;
         }
 
         .image-caption {
@@ -976,11 +1030,15 @@
         </div>
 
         <figure class="featured-image-container">
-            <div class="featured-image">
-                <img src="https://i.imgur.com/ieo2018banner.jpg" alt="IEO 2018 Official Banner" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22300%22%3E%3Crect fill=%22%23667eea%22 width=%22800%22 height=%22300%22/%3E%3Ctext fill=%22white%22 font-family=%22Arial%22 font-size=%2230%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3E3rd INDIAN ENGINEERING OLYMPIAD (IEO) February 2018%3C/text%3E%3C/svg%3E'">
+            <div class="ieo-logo-container">
+                <div class="ieo-logo-icon">
+                    <img src="https://i.imgur.com/ieologo.png" alt="IEO Logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22%3E%3Ccircle cx=%2240%22 cy=%2240%22 r=%2235%22 fill=%22%23ff9800%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2230%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🧠%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="ieo-logo-text">Indian Engineering Olympiad</div>
+                <div class="ieo-logo-subtext">IEO 2018</div>
             </div>
             <figcaption class="image-caption">
-                3rd Indian Engineering Olympiad (IEO) 2018 Official Banner presented by GATE Forum and powered by McGraw Hill Education.
+                Indian Engineering Olympiad (IEO) 2018 Official Logo.
                 <span class="image-credit">| Photo Credit: IEO Official</span>
             </figcaption>
         </figure>
