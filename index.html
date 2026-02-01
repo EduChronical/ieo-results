@@ -84,6 +84,11 @@
             font-weight: 500;
             font-size: 11px;
             white-space: nowrap;
+            transition: opacity 0.3s;
+        }
+
+        .header-links a:hover {
+            opacity: 0.8;
         }
 
         .header-main {
@@ -103,6 +108,7 @@
             letter-spacing: -1px;
             font-family: 'Times New Roman', serif;
             text-transform: uppercase;
+            text-decoration: none;
         }
 
         .logo span {
@@ -116,6 +122,9 @@
             cursor: pointer;
             color: var(--text-primary);
             padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Navigation */
@@ -150,6 +159,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             transition: color 0.3s;
+            padding: 5px 0;
         }
 
         .nav-links a:hover {
@@ -158,6 +168,7 @@
 
         .nav-links .active {
             color: var(--primary-red);
+            border-bottom: 2px solid var(--primary-red);
         }
 
         /* Article Container */
@@ -347,8 +358,6 @@
             margin-bottom: 16px;
             word-wrap: break-word;
         }
-
-        /* Removed Drop Cap Styling - now normal paragraph */
 
         .article-content h2 {
             font-size: 20px;
@@ -591,36 +600,6 @@
             font-weight: bold;
         }
 
-        /* Image Gallery */
-        .image-gallery {
-            margin: 25px 0;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-
-        .gallery-item {
-            background: var(--bg-light);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .gallery-image {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .gallery-caption {
-            padding: 10px;
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            color: var(--text-secondary);
-            text-align: center;
-            background: white;
-        }
-
         /* Sponsor Section */
         .sponsor-section {
             margin: 25px 0;
@@ -645,12 +624,6 @@
             justify-content: center;
             gap: 20px;
             align-items: center;
-        }
-
-        .sponsor-logo {
-            max-width: 150px;
-            height: auto;
-            border-radius: 4px;
         }
 
         /* Tags */
@@ -687,6 +660,7 @@
             text-decoration: none;
             transition: all 0.3s;
             word-wrap: break-word;
+            cursor: pointer;
         }
 
         .tag:hover {
@@ -727,6 +701,9 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             transition: transform 0.3s;
             cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .related-card:hover {
@@ -833,7 +810,80 @@
             font-size: 12px;
         }
 
-        /* Responsive */
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .menu-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .mobile-menu h3 {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            margin: 20px 0 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin-bottom: 5px;
+        }
+
+        .mobile-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            display: block;
+            padding: 8px 0;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--primary-red);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 1500;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Media Queries */
         @media (min-width: 768px) {
             .article-container {
                 max-width: 800px;
@@ -856,6 +906,10 @@
                 font-size: 24px;
             }
 
+            .article-content h3 {
+                font-size: 20px;
+            }
+
             .pull-quote {
                 float: right;
                 width: 300px;
@@ -875,10 +929,6 @@
                 white-space: normal;
                 font-size: 14px;
             }
-
-            .image-gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
 
         @media (min-width: 1024px) {
@@ -891,7 +941,6 @@
             }
         }
 
-        /* Print styles */
         @media print {
             .header, .nav-bar, .social-share, .footer, .related-section {
                 display: none;
@@ -906,23 +955,48 @@
 </head>
 <body>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="menu-close" onclick="closeMenu()">✕</button>
+        <h3>Sections</h3>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="entrance-exams.html">Entrance Exams</a></li>
+            <li><a href="engineering.html">Engineering</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="student-life.html">Student Life</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="campus-news.html">Campus News</a></li>
+        </ul>
+        <h3>Company</h3>
+        <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
     <!-- Header -->
     <header class="header">
         <div class="header-top">
             <div class="header-container">
                 <div class="header-date">April 12, 2018 | Updated 09:45 IST</div>
                 <div class="header-links">
-                    <a href="#">ePaper</a>
-                    <a href="#">Subscribe</a>
-                    <a href="#">Sign In</a>
+                    <a href="epaper.html">ePaper</a>
+                    <a href="subscribe.html">Subscribe</a>
+                    <a href="signin.html">Sign In</a>
                 </div>
             </div>
         </div>
         <div class="header-main">
             <div class="header-container">
                 <div class="logo-section">
-                    <button class="menu-btn">☰</button>
-                    <div class="logo">Edu<span>Chronicle</span></div>
+                    <button class="menu-btn" onclick="openMenu()">☰</button>
+                    <a href="index.html" class="logo">Edu<span>Chronicle</span></a>
                     <div style="width: 40px;"></div>
                 </div>
             </div>
@@ -933,14 +1007,14 @@
     <nav class="nav-bar">
         <div class="nav-container">
             <ul class="nav-links">
-                <li><a href="#" class="active">Education</a></li>
-                <li><a href="#">Entrance Exams</a></li>
-                <li><a href="#">Engineering</a></li>
-                <li><a href="#">Results</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Student Life</a></li>
-                <li><a href="#">Scholarships</a></li>
-                <li><a href="#">Campus News</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="entrance-exams.html">Entrance Exams</a></li>
+                <li><a href="engineering.html" class="active">Engineering</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="student-life.html">Student Life</a></li>
+                <li><a href="scholarships.html">Scholarships</a></li>
+                <li><a href="campus-news.html">Campus News</a></li>
             </ul>
         </div>
     </nav>
@@ -968,9 +1042,9 @@
             <span class="reading-time">5 min read</span>
 
             <div class="social-share">
-                <button class="share-btn">📤</button>
-                <button class="share-btn">💾</button>
-                <button class="share-btn">💬</button>
+                <button class="share-btn" onclick="shareArticle()">📤</button>
+                <button class="share-btn" onclick="saveArticle()">💾</button>
+                <button class="share-btn" onclick="showComments()">💬</button>
             </div>
         </div>
 
@@ -1175,40 +1249,40 @@
         <div class="article-tags">
             <span class="tags-label">Tags</span>
             <div class="tag-list">
-                <a href="#" class="tag">Indian Engineering Olympiad</a>
-                <a href="#" class="tag">IEO 2018</a>
-                <a href="#" class="tag">NIT Trichy</a>
-                <a href="#" class="tag">Jadavpur University</a>
-                <a href="#" class="tag">JNTUK</a>
-                <a href="#" class="tag">GATE Forum</a>
-                <a href="#" class="tag">Engineering Results</a>
-                <a href="#" class="tag">Civil Engineering</a>
+                <a href="tag-ieo.html" class="tag">Indian Engineering Olympiad</a>
+                <a href="tag-ieo2018.html" class="tag">IEO 2018</a>
+                <a href="tag-nittrichy.html" class="tag">NIT Trichy</a>
+                <a href="tag-jadavpur.html" class="tag">Jadavpur University</a>
+                <a href="tag-jntuk.html" class="tag">JNTUK</a>
+                <a href="tag-gate.html" class="tag">GATE Forum</a>
+                <a href="tag-results.html" class="tag">Engineering Results</a>
+                <a href="tag-civil.html" class="tag">Civil Engineering</a>
             </div>
         </div>
 
         <section class="related-section">
             <h3 class="related-header">Related Articles</h3>
             <div class="related-grid">
-                <article class="related-card">
+                <a href="gate-2019.html" class="related-card">
                     <div class="related-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">🎓</div>
                     <h4 class="related-title">GATE 2019 Registration Opens: Check Eligibility and Important Dates</h4>
                     <span class="related-meta">2 days ago</span>
-                </article>
-                <article class="related-card">
+                </a>
+                <a href="jee-advanced-2018.html" class="related-card">
                     <div class="related-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">📊</div>
                     <h4 class="related-title">JEE Advanced 2018: IIT Bombay Announces Examination Pattern Changes</h4>
                     <span class="related-meta">1 week ago</span>
-                </article>
-                <article class="related-card">
+                </a>
+                <a href="nirf-2018.html" class="related-card">
                     <div class="related-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">🏛️</div>
                     <h4 class="related-title">NIRF Rankings 2018: IIT Madras Retains Top Spot</h4>
                     <span class="related-meta">1 month ago</span>
-                </article>
-                <article class="related-card">
+                </a>
+                <a href="placements-2018.html" class="related-card">
                     <div class="related-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">💼</div>
                     <h4 class="related-title">Campus Placements 2018: Tech Giants Return with Record Salary Offers</h4>
                     <span class="related-meta">2 months ago</span>
-                </article>
+                </a>
             </div>
         </section>
     </article>
@@ -1219,37 +1293,37 @@
             <div class="footer-section">
                 <h4>Sections</h4>
                 <ul>
-                    <li><a href="#">Education</a></li>
-                    <li><a href="#">Entrance Exams</a></li>
-                    <li><a href="#">Engineering</a></li>
-                    <li><a href="#">Medical</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="entrance-exams.html">Entrance Exams</a></li>
+                    <li><a href="engineering.html">Engineering</a></li>
+                    <li><a href="medical.html">Medical</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Code of Ethics</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="ethics.html">Code of Ethics</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Subscribe</h4>
                 <ul>
-                    <li><a href="#">Digital Subscription</a></li>
-                    <li><a href="#">Print Subscription</a></li>
-                    <li><a href="#">Newsletter</a></li>
-                    <li><a href="#">Exam Alerts</a></li>
+                    <li><a href="subscribe.html">Digital Subscription</a></li>
+                    <li><a href="subscribe.html">Print Subscription</a></li>
+                    <li><a href="newsletter.html">Newsletter</a></li>
+                    <li><a href="exam-alerts.html">Exam Alerts</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Follow Us</h4>
                 <ul>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Telegram</a></li>
-                    <li><a href="#">Instagram</a></li>
+                    <li><a href="https://twitter.com/educhronicle">Twitter</a></li>
+                    <li><a href="https://facebook.com/educhronicle">Facebook</a></li>
+                    <li><a href="https://telegram.me/educhronicle">Telegram</a></li>
+                    <li><a href="https://instagram.com/educhronicle">Instagram</a></li>
                 </ul>
             </div>
         </div>
@@ -1257,6 +1331,39 @@
             <p>&copy; 2018 Edu Chronicle. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        function openMenu() {
+            document.getElementById('mobileMenu').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function shareArticle() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    url: window.location.href
+                });
+            } else {
+                alert('Share this article: ' + window.location.href);
+            }
+        }
+
+        function saveArticle() {
+            alert('Article saved to your reading list!');
+        }
+
+        function showComments() {
+            alert('Comments section coming soon!');
+        }
+    </script>
 
 </body>
 </html>
