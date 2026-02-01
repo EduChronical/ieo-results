@@ -30,20 +30,6 @@
             position: relative;
         }
 
-        /* Watermark effect */
-        .document::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 60px;
-            color: rgba(200, 200, 200, 0.1);
-            font-weight: bold;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
         /* Header Section */
         .header {
             display: flex;
@@ -63,14 +49,20 @@
         .emblem {
             width: 60px;
             height: 60px;
-            border: 2px solid #000;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 10px;
             text-align: center;
             background: #fff;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .emblem-text {
+            font-size: 11px;
+            font-weight: bold;
+            color: #000;
         }
 
         .board-name {
@@ -314,11 +306,8 @@
         <div class="header">
             <div class="logo-section">
                 <div class="emblem">
-                    <svg viewBox="0 0 60 60" width="50" height="50">
-                        <circle cx="30" cy="30" r="28" fill="none" stroke="#000" stroke-width="2"/>
-                        <text x="30" y="25" text-anchor="middle" font-size="6" font-weight="bold">सत्यमेव</text>
-                        <text x="30" y="35" text-anchor="middle" font-size="6" font-weight="bold">जयते</text>
-                    </svg>
+                    <div class="emblem-text">सत्यमेव</div>
+                    <div class="emblem-text">जयते</div>
                 </div>
                 <div class="board-name">
                     <div class="hindi">केंद्रीय माध्यमिक शिक्षा बोर्ड</div>
@@ -435,12 +424,12 @@
                     </tbody>
                 </table>
                 <div style="margin-top: 8px;">
-                    * Candidates eligible to appear in JEE(Advanced)-2014 may register online at <strong>http://jeeadv.nic.in</strong>
+                    * Candidates eligible to appear in JEE(Advanced)-2015 may register online at <strong>http://jeeadv.nic.in</strong>
                 </div>
             </div>
 
             <div class="note-item">
-                <span class="note-number">2.</span> A separate rank lists of JEE(Main) will be declared by 07.07.2014 for admission to B.E./B.Tech. and B.Arch/ B.Planning (in institutions other than IITs) based on score in JEE (Main) and normalised score of Class XII/ Qualifying examination (60% & 40% weightage respectively) (Refer para 2.10 of JEE(Main) Information Bulletin).
+                <span class="note-number">2.</span> A separate rank lists of JEE(Main) will be declared by 07.07.2015 for admission to B.E./B.Tech. and B.Arch/ B.Planning (in institutions other than IITs) based on score in JEE (Main) and normalised score of Class XII/ Qualifying examination (60% & 40% weightage respectively) (Refer para 2.10 of JEE(Main) Information Bulletin).
             </div>
 
             <div class="note-item">
