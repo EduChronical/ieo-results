@@ -51,17 +51,50 @@
             align-items: center;
             width: 100%;
         }
-        .header-date { opacity: 0.9; white-space: nowrap; }
-        .header-links { display: flex; gap: 15px; white-space: nowrap; }
-        .header-links a {
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .header-date {
+            opacity: 0.9;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+        .header-divider {
+            opacity: 0.6;
+            font-weight: 300;
+        }
+        .header-updated {
+            opacity: 0.85;
+            white-space: nowrap;
+            font-size: 11px;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header-link {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            font-size: 11px;
+            font-size: 12px;
             white-space: nowrap;
             transition: opacity 0.3s;
+            position: relative;
         }
-        .header-links a:hover { opacity: 0.8; }
+        .header-link:hover { opacity: 0.8; }
+        .header-link:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 12px;
+            background: rgba(255,255,255,0.4);
+        }
         .header-main { padding: 15px 0; }
         .logo-section { display: flex; align-items: center; justify-content: space-between; }
         .logo {
@@ -512,11 +545,15 @@
     <header class="header">
         <div class="header-top">
             <div class="header-container">
-                <div class="header-date">April 12, 2018 | Updated 09:45 IST</div>
-                <div class="header-links">
-                    <a href="epaper.html">ePaper</a>
-                    <a href="subscribe.html">Subscribe</a>
-                    <a href="signin.html">Sign In</a>
+                <div class="header-left">
+                    <span class="header-date">April 12, 2018</span>
+                    <span class="header-divider">|</span>
+                    <span class="header-updated">Updated 09:45 IST</span>
+                </div>
+                <div class="header-right">
+                    <a href="epaper.html" class="header-link">ePaper</a>
+                    <a href="subscribe.html" class="header-link">Subscribe</a>
+                    <a href="signin.html" class="header-link">Sign In</a>
                 </div>
             </div>
         </div>
