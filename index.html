@@ -3,450 +3,820 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEE Main 2015 Score Card - CBSE</title>
+    <title>Secondary School Certificate - Board of Secondary Education Andhra Pradesh</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;700&family=Times+New+Roman&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: "Times New Roman", Times, serif;
-            background: #f0f0f0;
-            padding: 20px;
+            background: #c0c0c0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            padding: 20px;
+            font-family: 'Times New Roman', Times, serif;
         }
-
-        .document {
-            background: white;
+        
+        .certificate-wrapper {
             width: 210mm;
-            min-height: 297mm;
-            padding: 25mm 20mm;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            height: 297mm;
+            background: linear-gradient(135deg, #f0e6e6 0%, #e6f0e6 50%, #f0e6f0 100%);
             position: relative;
+            box-shadow: 0 0 30px rgba(0,0,0,0.4);
+            overflow: hidden;
         }
-
+        
+        /* Complex guilloche border pattern */
+        .guilloche-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 12px solid transparent;
+            border-image: repeating-linear-gradient(
+                45deg,
+                #1a4a1a 0px,
+                #2d5a2d 5px,
+                #4a7c4a 10px,
+                #2d5a2d 15px,
+                #1a4a1a 20px
+            ) 12;
+        }
+        
+        .inner-border {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid rgba(45, 90, 45, 0.4);
+        }
+        
+        /* Security background pattern */
+        .security-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(139, 69, 69, 0.03) 4px, rgba(139, 69, 69, 0.03) 8px),
+                repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(69, 139, 69, 0.03) 4px, rgba(69, 139, 69, 0.03) 8px),
+                repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(0,0,0,0.02) 6px, rgba(0,0,0,0.02) 12px),
+                repeating-linear-gradient(-45deg, transparent, transparent 6px, rgba(0,0,0,0.02) 6px, rgba(0,0,0,0.02) 12px);
+            pointer-events: none;
+        }
+        
+        /* Watermark pattern */
+        .watermark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 30% 40%, rgba(200, 180, 180, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 70% 60%, rgba(180, 200, 180, 0.15) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 10;
+            padding: 20px 30px;
+            height: 100%;
+        }
+        
         /* Header Section */
         .header {
+            text-align: center;
+            position: relative;
+        }
+        
+        .board-title {
+            font-family: 'UnifrakturMaguntia', 'Old English Text MT', serif;
+            font-size: 32px;
+            color: #2d3a2d;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 2px;
+        }
+        
+        .board-subtitle {
+            font-size: 13px;
+            color: #4a5a4a;
+            letter-spacing: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        /* Top Section with QR, Emblem, Photo */
+        .top-section {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #000;
-            padding-bottom: 10px;
+            margin-top: 15px;
+            position: relative;
         }
-
-        .logo-section {
+        
+        .left-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            width: 80px;
+        }
+        
+        .ll-number {
+            font-size: 20px;
+            color: #5a3050;
+            font-weight: bold;
+            letter-spacing: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .qr-placeholder {
+            width: 75px;
+            height: 75px;
+            background: 
+                repeating-linear-gradient(0deg, #000 0px, #000 2px, transparent 2px, transparent 4px),
+                repeating-linear-gradient(90deg, #000 0px, #000 2px, transparent 2px, transparent 4px);
+            background-size: 4px 4px;
+            position: relative;
+            border: 1px solid #333;
+        }
+        
+        .center-section {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            top: -10px;
+        }
+        
+        .emblem {
+            width: 90px;
+            height: 90px;
+            border: 2px solid #4a5a4a;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 15px;
+            justify-content: center;
+            background: radial-gradient(circle, #f8f8f8 0%, #e0e0e0 100%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            position: relative;
         }
-
-        .emblem {
-            width: 60px;
-            height: 60px;
+        
+        .emblem-inner {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #4a5a4a;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 7px;
+            color: #2d3a2d;
+            text-align: center;
+            padding: 3px;
+            position: relative;
+        }
+        
+        .emblem-text-top {
+            font-size: 6px;
+            letter-spacing: 0.5px;
+            position: absolute;
+            top: 8px;
+        }
+        
+        .emblem-text-bottom {
+            font-size: 8px;
+            position: absolute;
+            bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .ashoka-symbol {
+            font-size: 24px;
+            color: #2d5a2d;
+        }
+        
+        .right-section {
+            width: 85px;
+            height: 110px;
+            border: 1px solid #999;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 10px;
+            color: #999;
+        }
+        
+        /* Certificate Title */
+        .cert-title-section {
             text-align: center;
-            background: #fff;
-            flex-direction: column;
-            line-height: 1.2;
+            margin-top: 10px;
+            margin-bottom: 15px;
         }
-
-        .emblem-text {
-            font-size: 11px;
+        
+        .cert-title {
+            font-size: 22px;
             font-weight: bold;
-            color: #000;
+            color: #4a5a4a;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
         }
-
-        .board-name {
-            background: #000;
-            color: #fff;
-            padding: 8px 15px;
-            font-weight: bold;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-
-        .board-name .hindi {
-            font-size: 16px;
-            margin-bottom: 2px;
-        }
-
-        .board-name .english {
+        
+        .cert-subtitle {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
             font-size: 13px;
-            letter-spacing: 0.5px;
+            color: #4a5a4a;
+            font-weight: bold;
         }
-
-        .top-right {
-            text-align: right;
+        
+        /* Student Information */
+        .student-info {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #3a4a3a;
+            margin-bottom: 15px;
+        }
+        
+        .info-row {
+            display: flex;
+            margin-bottom: 3px;
+        }
+        
+        .info-label {
+            color: #5a6a5a;
+            min-width: 140px;
+        }
+        
+        .info-value {
+            font-weight: bold;
+            color: #2a3a2a;
+        }
+        
+        .gpa-highlight {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a2a1a;
+        }
+        
+        /* Date of Birth Box */
+        .dob-section {
+            border: 1px solid #999;
+            margin: 10px 0;
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .dob-header {
+            background: linear-gradient(180deg, #d0d8d0 0%, #c0c8c0 100%);
+            padding: 5px 15px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #3a4a3a;
+            border-bottom: 1px solid #999;
+            width: 120px;
+        }
+        
+        .dob-content {
+            display: flex;
+            border-top: 1px solid #999;
+        }
+        
+        .dob-cell {
+            flex: 1;
+            padding: 8px;
+            text-align: center;
+            border-right: 1px solid #999;
+            font-size: 13px;
+            font-weight: bold;
+            color: #2a3a2a;
+        }
+        
+        .dob-cell:last-child {
+            border-right: none;
+        }
+        
+        /* Grades Section Header */
+        .grades-header {
+            background: linear-gradient(180deg, #e8d8e8 0%, #d8c8d8 50%, #c8b8c8 100%);
+            padding: 8px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: bold;
+            color: #4a3a4a;
+            border: 1px solid #999;
+            border-bottom: none;
+            letter-spacing: 1px;
+        }
+        
+        /* Grades Table */
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            border: 1px solid #999;
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .grades-table th {
+            background: linear-gradient(180deg, #d8e0d8 0%, #c8d0c8 100%);
+            padding: 6px;
+            border: 1px solid #999;
+            font-weight: bold;
+            color: #3a4a3a;
             font-size: 11px;
+        }
+        
+        .grades-table td {
+            padding: 6px 10px;
+            border: 1px solid #999;
+            color: #2a3a2a;
+        }
+        
+        .subject-col {
+            text-align: left;
+            width: 45%;
+        }
+        
+        .grade-col {
+            text-align: center;
+            width: 15%;
+            font-weight: bold;
+        }
+        
+        .points-col {
+            text-align: center;
+            width: 20%;
+        }
+        
+        .words-col {
+            text-align: center;
+            width: 20%;
+        }
+        
+        .total-row {
+            font-weight: bold;
+            background: rgba(200, 210, 200, 0.3);
+        }
+        
+        .total-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 20px;
+            background: #2a3a2a;
+            color: white;
+            font-size: 10px;
+            margin-right: 5px;
+        }
+        
+        /* Life Skills Section */
+        .life-skills {
+            border: 1px solid #999;
+            border-top: none;
+            padding: 8px 15px;
+            font-size: 12px;
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .life-skills-label {
+            color: #5a6a5a;
+        }
+        
+        .life-skills-value {
+            font-weight: bold;
+            color: #2a3a2a;
+        }
+        
+        /* Marks of Identification */
+        .identification {
+            border: 1px solid #999;
+            border-top: none;
+            padding: 8px 15px;
+            display: flex;
+            font-size: 12px;
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .ident-label {
+            color: #5a6a5a;
+            min-width: 150px;
+        }
+        
+        .ident-box {
+            border: 1px solid #999;
+            padding: 5px 10px;
+            flex: 1;
+            background: rgba(255,255,255,0.4);
+        }
+        
+        .ident-text {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 11px;
+            color: #3a3a3a;
             line-height: 1.6;
         }
-
-        .top-right .url {
-            color: #000;
-            text-decoration: none;
-            font-size: 10px;
+        
+        /* Bottom Section with Signatures */
+        .bottom-section {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: relative;
         }
-
-        .top-right .exam-title {
-            font-size: 13px;
+        
+        .left-signature {
+            text-align: center;
+            width: 200px;
+        }
+        
+        .signature-line {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+            transform: rotate(-5deg);
+        }
+        
+        .signature-title {
+            font-size: 11px;
+            color: #4a5a4a;
+            font-style: italic;
+        }
+        
+        .school-name {
+            font-size: 12px;
+            color: #3a4a3a;
             font-weight: bold;
+        }
+        
+        .date-issue {
+            font-size: 11px;
+            color: #3a4a3a;
             margin-top: 5px;
         }
-
-        .top-right .nic-line {
-            font-size: 11px;
+        
+        /* School Stamp */
+        .stamp-section {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
         }
-
-        /* Main Title */
-        .main-title {
+        
+        .school-stamp {
+            width: 140px;
+            height: 140px;
+            border: 3px solid #4a4a9a;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #4a4a9a;
+            font-size: 9px;
             text-align: center;
-            margin: 25px 0;
-            line-height: 1.8;
+            position: relative;
+            opacity: 0.8;
+            transform: rotate(-15deg);
         }
-
-        .main-title .apex {
-            font-size: 13px;
+        
+        .stamp-text {
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .stamp-date {
+            border-bottom: 1px dotted #4a4a9a;
+            padding-bottom: 2px;
+            margin: 3px 0;
+        }
+        
+        /* Right Signature */
+        .right-signature {
+            text-align: center;
+            width: 200px;
+        }
+        
+        .sec-signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 24px;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+        
+        .sec-title {
+            font-size: 12px;
+            color: #3a4a3a;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
-        .main-title .exam-name {
-            font-size: 15px;
-            font-weight: bold;
-            text-transform: uppercase;
+        
+        .sec-subtitle {
+            font-size: 11px;
+            color: #4a5a4a;
         }
-
-        .main-title .paper {
-            font-size: 13px;
-            font-weight: bold;
+        
+        /* Barcode */
+        .barcode-section {
+            margin-top: 15px;
+            text-align: right;
         }
-
-        /* Student Details Grid */
-        .details-section {
-            margin: 30px 0;
-        }
-
-        .detail-row {
-            display: flex;
-            margin-bottom: 8px;
-            font-size: 12px;
-        }
-
-        .detail-label {
+        
+        .barcode {
+            display: inline-block;
             width: 200px;
-            font-weight: normal;
+            height: 40px;
+            background: repeating-linear-gradient(90deg, 
+                #000 0px, #000 2px, 
+                transparent 2px, transparent 4px,
+                #000 4px, #000 5px,
+                transparent 5px, transparent 8px
+            );
         }
-
-        .detail-value {
-            flex: 1;
-            font-weight: bold;
-        }
-
-        /* Marks Table */
-        .marks-section {
-            display: flex;
-            justify-content: space-between;
-            margin: 30px 0;
-            gap: 40px;
-        }
-
-        .subjects-table {
-            flex: 1;
-        }
-
-        .table-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            font-size: 12px;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-        }
-
-        .table-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            margin-bottom: 8px;
-            padding: 3px 0;
-        }
-
-        .table-row.total {
-            font-weight: bold;
-            border-top: 1px solid #000;
+        
+        /* Footer Notes */
+        .footer-notes {
             margin-top: 10px;
+            font-size: 9px;
+            color: #5a6a5a;
+            line-height: 1.4;
+            border-top: 1px solid #ccc;
             padding-top: 8px;
         }
-
-        .marks-col {
-            text-align: right;
-            min-width: 80px;
-        }
-
-        /* Remarks Section */
-        .remarks {
-            text-align: center;
-            font-size: 12px;
-            font-weight: bold;
-            margin: 25px 0;
-            font-style: italic;
-        }
-
-        /* Notes Section */
-        .notes-section {
-            margin-top: 30px;
-        }
-
-        .notes-title {
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-decoration: underline;
-        }
-
+        
         .note-item {
-            font-size: 11px;
-            margin-bottom: 15px;
-            line-height: 1.6;
-            text-align: justify;
+            margin-bottom: 2px;
         }
-
-        .note-number {
+        
+        /* Watermark text overlay */
+        .watermark-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 60px;
+            color: rgba(0,0,0,0.03);
             font-weight: bold;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 1;
         }
-
-        /* Cutoff Table */
-        .cutoff-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 10px 0;
-            font-size: 11px;
-        }
-
-        .cutoff-table th,
-        .cutoff-table td {
-            border: 1px solid #000;
-            padding: 6px 10px;
-            text-align: left;
-        }
-
-        .cutoff-table th {
-            background: #f5f5f5;
-            font-weight: bold;
-        }
-
-        .cutoff-table td:last-child {
-            text-align: center;
-        }
-
-        /* Footer Details */
-        .footer-details {
-            margin-top: 30px;
-            font-size: 11px;
-            line-height: 2;
-        }
-
-        .footer-row {
-            margin-bottom: 5px;
-        }
-
-        .footer-label {
-            font-weight: bold;
-        }
-
-        /* Print Styles */
+        
         @media print {
             body {
                 background: white;
                 padding: 0;
             }
-            .document {
+            .certificate-wrapper {
                 box-shadow: none;
-                width: 100%;
-                padding: 15mm;
-            }
-        }
-
-        /* Responsive */
-        @media screen and (max-width: 768px) {
-            .document {
-                width: 100%;
-                padding: 20px;
-            }
-            .header {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .top-right {
-                text-align: left;
-            }
-            .detail-row {
-                flex-direction: column;
-                gap: 2px;
-            }
-            .detail-label {
-                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="document">
-        <!-- Header Section -->
-        <div class="header">
-            <div class="logo-section">
-                <div class="emblem">
-                    <div class="emblem-text">सत्यमेव</div>
-                    <div class="emblem-text">जयते</div>
-                </div>
-                <div class="board-name">
-                    <div class="hindi">केंद्रीय माध्यमिक शिक्षा बोर्ड</div>
-                    <div class="english">Central Board of Secondary Education</div>
-                </div>
+    <div class="certificate-wrapper">
+        <div class="guilloche-border"></div>
+        <div class="inner-border"></div>
+        <div class="security-bg"></div>
+        <div class="watermark"></div>
+        <div class="watermark-text">BOARD OF SECONDARY EDUCATION</div>
+        
+        <div class="content">
+            <!-- Header -->
+            <div class="header">
+                <div class="board-title">Board of Secondary Education</div>
+                <div class="board-subtitle">ANDHRA PRADESH, INDIA</div>
             </div>
-            <div class="top-right">
-                <div class="url">http://cbseresults.nic.in</div>
-                <div class="exam-title">Examination Results 2015</div>
-                <div class="nic-line">Brought to you by National Informatics Centre</div>
-            </div>
-        </div>
-
-        <!-- Main Title -->
-        <div class="main-title">
-            <div class="apex">JEE APEX BOARD SECRETARIAT</div>
-            <div class="exam-name">JOINT ENTRANCE EXAMINATION (MAIN)-2015</div>
-            <div class="paper">Score of Paper I</div>
-        </div>
-
-        <!-- Student Details -->
-        <div class="details-section">
-            <div class="detail-row">
-                <div class="detail-label">Roll No:</div>
-                <div class="detail-value">52703312</div>
-            </div>
-            <div class="detail-row">
-                <div class="detail-label">DOB :</div>
-                <div class="detail-value">25/12/1998</div>
-            </div>
-            <div class="detail-row">
-                <div class="detail-label">Name:</div>
-                <div class="detail-value">AGURU MANOJ KUMAR</div>
-            </div>
-            <div class="detail-row">
-                <div class="detail-label">Mother's Name:</div>
-                <div class="detail-value">AGURU VISALAKSHI</div>
-            </div>
-            <div class="detail-row">
-                <div class="detail-label">Father's Name:</div>
-                <div class="detail-value">AGURU MOHANRAO</div>
-            </div>
-            <div class="detail-row">
-                <div class="detail-label">Category:</div>
-                <div class="detail-value">OBC</div>
-            </div>
-            <div class="detail-row">
-                <div class="detail-label">State Code of Eligibility:</div>
-                <div class="detail-value">(02) ANDHRA PRADESH</div>
-            </div>
-        </div>
-
-        <!-- Marks Section -->
-        <div class="marks-section">
-            <div class="subjects-table">
-                <div class="table-header">
-                    <span>Subjects</span>
-                    <span class="marks-col">Marks Obtained</span>
-                </div>
-                <div class="table-row">
-                    <span>Physics</span>
-                    <span class="marks-col">65</span>
-                </div>
-                <div class="table-row">
-                    <span>Chemistry</span>
-                    <span class="marks-col">60</span>
-                </div>
-                <div class="table-row">
-                    <span>Mathematics</span>
-                    <span class="marks-col">72</span>
-                </div>
-                <div class="table-row total">
-                    <span>Total</span>
-                    <span class="marks-col">197</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Remarks -->
-        <div class="remarks">
-            Remarks: Eligible for JEE (Advanced) - 2015 and see note below
-        </div>
-
-        <!-- Notes Section -->
-        <div class="notes-section">
-            <div class="notes-title">Notes :</div>
             
-            <div class="note-item">
-                <span class="note-number">1.</span> Cut-off score for appearing in JEE (Advanced) – 2015 for following categories*–
-                <table class="cutoff-table">
-                    <thead>
-                        <tr>
-                            <th>Category</th>
-                            <th>Cut-off Score</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Common Merit List (CML)</td>
-                            <td>105</td>
-                        </tr>
-                        <tr>
-                            <td>Other Backward Class (OBC - NCL)</td>
-                            <td>70</td>
-                        </tr>
-                        <tr>
-                            <td>Scheduled Caste (SC)</td>
-                            <td>50</td>
-                        </tr>
-                        <tr>
-                            <td>Scheduled Tribe (ST)</td>
-                            <td>44</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div style="margin-top: 8px;">
-                    * Candidates eligible to appear in JEE(Advanced)-2015 may register online at <strong>http://jeeadv.nic.in</strong>
+            <!-- Top Section -->
+            <div class="top-section">
+                <div class="left-section">
+                    <div class="ll-number">LL 0104771</div>
+                    <div class="qr-placeholder"></div>
+                </div>
+                
+                <div class="center-section">
+                    <div class="emblem">
+                        <div class="emblem-inner">
+                            <div class="emblem-text-top">GOVERNMENT OF ANDHRA PRADESH</div>
+                            <div class="ashoka-symbol">☸</div>
+                            <div class="emblem-text-bottom">सत्यमेव जयते</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="right-section">
+                    <div class="photo-placeholder">PHOTO</div>
                 </div>
             </div>
-
-            <div class="note-item">
-                <span class="note-number">2.</span> A separate rank lists of JEE(Main) will be declared by 07.07.2015 for admission to B.E./B.Tech. and B.Arch/ B.Planning (in institutions other than IITs) based on score in JEE (Main) and normalised score of Class XII/ Qualifying examination (60% & 40% weightage respectively) (Refer para 2.10 of JEE(Main) Information Bulletin).
+            
+            <!-- Certificate Title -->
+            <div class="cert-title-section">
+                <div class="cert-title">SECONDARY SCHOOL CERTIFICATE</div>
+                <div class="cert-subtitle">
+                    <span>REGULAR</span>
+                    <span>PC/06/05326/0094771/8</span>
+                </div>
             </div>
-
-            <div class="note-item">
-                <span class="note-number">3.</span> Please check your given below details pertaining to Class XII/ Qualifying Examination for correctness and correction(s), if any may be submitted online through JEE(Main) website <strong>http://www.jeemain.nic.in</strong>
+            
+            <!-- Student Information -->
+            <div class="student-info">
+                <div class="info-row">
+                    <span class="info-label">CERTIFIED THAT</span>
+                    <span class="info-value">AGURU MANOJ KUMAR</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">FATHER NAME :</span>
+                    <span class="info-value">AGURU MOHAN RAO</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">MOTHER NAME:</span>
+                    <span class="info-value">MUGADA VISALAKSHI</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">bearing Roll No.</span>
+                    <span class="info-value">1206123129</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">belonging to</span>
+                    <span class="info-value">SURESH HIGH SCHOOL VIDYANAGAR VENKAMPETA</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">has appeared and PASSED SSC EXAMINATION held in MARCH 2012 with GPA</span>
+                    <span class="gpa-highlight">9.0</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">and</span>
+                    <span class="info-value">ENGLISH</span>
+                    <span style="margin-left: 10px; color: #5a6a5a;">as medium of instruction.</span>
+                </div>
             </div>
-        </div>
-
-        <!-- Footer Details -->
-        <div class="footer-details">
-            <div class="footer-row">
-                <span class="footer-label">Roll No. of Class XII/ Qualifying Examination :</span> 1524215983
+            
+            <!-- Date of Birth -->
+            <div class="dob-section">
+                <div class="dob-header">DATE OF BIRTH</div>
+                <div class="dob-content">
+                    <div class="dob-cell">05/06/1997</div>
+                    <div class="dob-cell">ZERO FIVE</div>
+                    <div class="dob-cell">JUNE</div>
+                    <div class="dob-cell">ONE NINE NINE SEVEN</div>
+                </div>
             </div>
-            <div class="footer-row">
-                <span class="footer-label">Year of Passing :</span> 2015
+            
+            <!-- Grades Header -->
+            <div class="grades-header">
+                THE CANDIDATE SECURED THE FOLLOWING GRADES AND GRADE POINTS
             </div>
-            <div class="footer-row">
-                <span class="footer-label">Examining Board/Body :</span> (01) ANDHRA PRADESH BOARD OF INTERMEDIATE EDUCATION
+            
+            <!-- Grades Table -->
+            <table class="grades-table">
+                <thead>
+                    <tr>
+                        <th>SUBJECT</th>
+                        <th>GRADES</th>
+                        <th colspan="2">GRADE POINTS</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>In Figures</th>
+                        <th>In Words</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="subject-col">FIRST LANGUAGE : ( TELUGU/SANSKRIT )</td>
+                        <td class="grade-col">A1</td>
+                        <td class="points-col">10</td>
+                        <td class="words-col">ONE ZERO</td>
+                    </tr>
+                    <tr>
+                        <td class="subject-col">THIRD LANGUAGE : ENGLISH</td>
+                        <td class="grade-col">B1</td>
+                        <td class="points-col">08</td>
+                        <td class="words-col">ZERO EIGHT</td>
+                    </tr>
+                    <tr>
+                        <td class="subject-col">MATHEMATICS :</td>
+                        <td class="grade-col">A1</td>
+                        <td class="points-col">10</td>
+                        <td class="words-col">ONE ZERO</td>
+                    </tr>
+                    <tr>
+                        <td class="subject-col">GENERAL SCIENCE :</td>
+                        <td class="grade-col">A1</td>
+                        <td class="points-col">10</td>
+                        <td class="words-col">ONE ZERO</td>
+                    </tr>
+                    <tr>
+                        <td class="subject-col">SOCIAL STUDIES :</td>
+                        <td class="grade-col">A2</td>
+                        <td class="points-col">09</td>
+                        <td class="words-col">ZERO NINE</td>
+                    </tr>
+                    <tr>
+                        <td class="subject-col">SECOND LANGUAGE : ( HINDI )</td>
+                        <td class="grade-col">B2</td>
+                        <td class="points-col">07</td>
+                        <td class="words-col">ZERO SEVEN</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td class="subject-col">
+                            <span class="total-icon">54</span>
+                            GRADE POINTS TOTAL :
+                        </td>
+                        <td class="grade-col"></td>
+                        <td class="points-col">54</td>
+                        <td class="words-col">FIVE FOUR</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Life Skills -->
+            <div class="life-skills">
+                <span class="life-skills-label">Life Skills Education :</span>
+                <span class="life-skills-value">GRADE SECURED : A</span>
+            </div>
+            
+            <!-- Marks of Identification -->
+            <div class="identification">
+                <div class="ident-label">Marks of Identification</div>
+                <div class="ident-box">
+                    <div class="ident-text">1. A MOLE ON THE LEFT FOOT</div>
+                    <div class="ident-text">2. A MOLE ON THE BACK</div>
+                </div>
+            </div>
+            
+            <!-- Bottom Section -->
+            <div class="bottom-section">
+                <div class="left-signature">
+                    <div class="signature-line">Qras</div>
+                    <div class="signature-title">Head Master</div>
+                    <div class="school-name">SURESH HIGH SCHOOL</div>
+                    <div class="school-name">VENKAMPETA</div>
+                    <div class="date-issue">Date of Issue : 24-May-2012</div>
+                    <div style="font-size: 10px; color: #666; margin-top: 5px;">PARVATIPURAM-535 501</div>
+                </div>
+                
+                <div class="stamp-section">
+                    <div class="school-stamp">
+                        <div class="stamp-text">SURESH HIGH SCHOOL</div>
+                        <div class="stamp-date">Date ...........</div>
+                        <div class="stamp-text">Vidyanagar</div>
+                        <div class="stamp-text">VENKAMPETA</div>
+                        <div class="stamp-text">PARVATIPURAM</div>
+                    </div>
+                </div>
+                
+                <div class="right-signature">
+                    <div class="sec-signature">Angrw</div>
+                    <div class="sec-title">SECRETARY</div>
+                    <div class="sec-subtitle">BOARD OF SECONDARY EDUCATION</div>
+                    <div class="sec-subtitle">A.P. HYDERABAD</div>
+                </div>
+            </div>
+            
+            <!-- Barcode -->
+            <div class="barcode-section">
+                <div class="barcode"></div>
+            </div>
+            
+            <!-- Footer Notes -->
+            <div class="footer-notes">
+                <div class="note-item">1. Life skills Education : The PARVATHIPURAM will be incorporated by the respective Head of the Institution (Dist.)</div>
+                <div class="note-item">2. Any corrections in the certificate will not be entertained after one year from the date of issue.</div>
+                <div class="note-item">3. Any unauthorised correction in the certificate will result in cancellation of certificate.</div>
+                <div class="note-item">4. The Grades with asterisk indicate the old grades secured in previous appearances.</div>
             </div>
         </div>
     </div>
