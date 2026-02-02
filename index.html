@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secondary School Certificate - Board of Secondary Education Andhra Pradesh</title>
+    <title>EAMCET 2014 Marks Sheet</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;700&family=Times+New+Roman&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
@@ -14,849 +12,579 @@
         }
         
         body {
-            background: #c0c0c0;
+            font-family: "Times New Roman", Times, serif;
+            background: #f5f5f5;
+            padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            font-family: 'Times New Roman', Times, serif;
         }
         
-        .certificate-wrapper {
+        .container {
             width: 210mm;
-            height: 297mm;
-            background: linear-gradient(135deg, #f0e6e6 0%, #e6f0e6 50%, #f0e6f0 100%);
-            position: relative;
-            box-shadow: 0 0 30px rgba(0,0,0,0.4);
-            overflow: hidden;
+            background: white;
+            padding: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         
-        /* Complex guilloche border pattern */
-        .guilloche-border {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 12px solid transparent;
-            border-image: repeating-linear-gradient(
-                45deg,
-                #1a4a1a 0px,
-                #2d5a2d 5px,
-                #4a7c4a 10px,
-                #2d5a2d 15px,
-                #1a4a1a 20px
-            ) 12;
-        }
-        
-        .inner-border {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border: 2px solid rgba(45, 90, 45, 0.4);
-        }
-        
-        /* Security background pattern */
-        .security-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(139, 69, 69, 0.03) 4px, rgba(139, 69, 69, 0.03) 8px),
-                repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(69, 139, 69, 0.03) 4px, rgba(69, 139, 69, 0.03) 8px),
-                repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(0,0,0,0.02) 6px, rgba(0,0,0,0.02) 12px),
-                repeating-linear-gradient(-45deg, transparent, transparent 6px, rgba(0,0,0,0.02) 6px, rgba(0,0,0,0.02) 12px);
-            pointer-events: none;
-        }
-        
-        /* Watermark pattern */
-        .watermark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 30% 40%, rgba(200, 180, 180, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 70% 60%, rgba(180, 200, 180, 0.15) 0%, transparent 40%);
-            pointer-events: none;
-        }
-        
-        .content {
-            position: relative;
-            z-index: 10;
-            padding: 20px 30px;
-            height: 100%;
-        }
-        
-        /* Header Section */
-        .header {
-            text-align: center;
-            position: relative;
-        }
-        
-        .board-title {
-            font-family: 'UnifrakturMaguntia', 'Old English Text MT', serif;
-            font-size: 32px;
-            color: #2d3a2d;
-            letter-spacing: 1px;
+        /* Header Ads Row */
+        .header-ads {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 4px;
+            font-size: 8px;
             line-height: 1.1;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-            margin-bottom: 2px;
         }
         
-        .board-subtitle {
-            font-size: 13px;
-            color: #4a5a4a;
-            letter-spacing: 4px;
+        .ad-box {
+            border: 1px solid #000;
+            padding: 3px;
+            flex: 1;
+        }
+        
+        .ad-box h3 {
+            font-size: 9px;
             font-weight: bold;
+            margin-bottom: 2px;
             text-transform: uppercase;
         }
         
-        /* Top Section with QR, Emblem, Photo */
-        .top-section {
+        .ad-box.black {
+            background: #000;
+            color: white;
+        }
+        
+        .ad-box.black h3 {
+            color: white;
+        }
+        
+        /* Main Content Area */
+        .main-content {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-top: 15px;
-            position: relative;
+            gap: 4px;
         }
         
-        .left-section {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
-            width: 80px;
-        }
-        
-        .ll-number {
-            font-size: 20px;
-            color: #5a3050;
-            font-weight: bold;
-            letter-spacing: 3px;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .qr-placeholder {
-            width: 75px;
-            height: 75px;
-            background: 
-                repeating-linear-gradient(0deg, #000 0px, #000 2px, transparent 2px, transparent 4px),
-                repeating-linear-gradient(90deg, #000 0px, #000 2px, transparent 2px, transparent 4px);
-            background-size: 4px 4px;
-            position: relative;
-            border: 1px solid #333;
-        }
-        
-        .center-section {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            top: -10px;
-        }
-        
-        .emblem {
-            width: 90px;
-            height: 90px;
-            border: 2px solid #4a5a4a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle, #f8f8f8 0%, #e0e0e0 100%);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            position: relative;
-        }
-        
-        .emblem-inner {
-            width: 80px;
-            height: 80px;
-            border: 1px solid #4a5a4a;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 7px;
-            color: #2d3a2d;
-            text-align: center;
-            padding: 3px;
-            position: relative;
-        }
-        
-        .emblem-text-top {
-            font-size: 6px;
-            letter-spacing: 0.5px;
-            position: absolute;
-            top: 8px;
-        }
-        
-        .emblem-text-bottom {
-            font-size: 8px;
-            position: absolute;
-            bottom: 8px;
-            font-weight: bold;
-        }
-        
-        .ashoka-symbol {
-            font-size: 24px;
-            color: #2d5a2d;
-        }
-        
-        .right-section {
+        /* Left Sidebar */
+        .left-sidebar {
             width: 85px;
-            height: 110px;
-            border: 1px solid #999;
-            background: #f5f5f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 7px;
+            line-height: 1.1;
         }
         
-        .photo-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .left-sidebar .ad-box {
+            margin-bottom: 4px;
+        }
+        
+        .left-sidebar h3 {
             font-size: 10px;
-            color: #999;
+            background: #000;
+            color: white;
+            padding: 2px;
+            margin: -3px -3px 3px -3px;
         }
         
-        /* Certificate Title */
-        .cert-title-section {
-            text-align: center;
-            margin-top: 10px;
-            margin-bottom: 15px;
+        .left-sidebar ul {
+            list-style: none;
+            padding-left: 0;
         }
         
-        .cert-title {
-            font-size: 22px;
+        .left-sidebar li {
+            margin-bottom: 1px;
+        }
+        
+        .left-sidebar .college-name {
             font-weight: bold;
-            color: #4a5a4a;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
+            font-size: 8px;
         }
         
-        .cert-subtitle {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            font-size: 13px;
-            color: #4a5a4a;
-            font-weight: bold;
-        }
-        
-        /* Student Information */
-        .student-info {
-            font-size: 13px;
-            line-height: 1.8;
-            color: #3a4a3a;
-            margin-bottom: 15px;
-        }
-        
-        .info-row {
-            display: flex;
-            margin-bottom: 3px;
-            align-items: baseline;
-        }
-        
-        .info-label {
-            color: #5a6a5a;
-            min-width: 140px;
-        }
-        
-        .info-value {
-            font-weight: bold;
-            color: #2a3a2a;
-        }
-        
-        .gpa-row {
-            display: flex;
-            align-items: baseline;
-            flex-wrap: wrap;
-        }
-        
-        .gpa-text {
-            color: #5a6a5a;
-        }
-        
-        .gpa-highlight {
-            font-size: 24px;
-            font-weight: bold;
-            color: #1a2a1a;
-            margin-left: 5px;
-        }
-        
-        .medium-row {
-            display: flex;
-            align-items: baseline;
-            margin-top: 3px;
-        }
-        
-        .medium-label {
-            color: #5a6a5a;
-            min-width: 40px;
-        }
-        
-        .medium-value {
-            font-weight: bold;
-            color: #2a3a2a;
-            margin: 0 10px;
-        }
-        
-        .medium-text {
-            color: #5a6a5a;
-        }
-        
-        /* Date of Birth Box */
-        .dob-section {
-            border: 1px solid #999;
-            margin: 10px 0;
-            background: rgba(255,255,255,0.3);
-        }
-        
-        .dob-header {
-            background: linear-gradient(180deg, #d0d8d0 0%, #c0c8c0 100%);
-            padding: 5px 15px;
-            font-size: 12px;
-            font-weight: bold;
-            color: #3a4a3a;
-            border-bottom: 1px solid #999;
-            width: 120px;
-        }
-        
-        .dob-content {
-            display: flex;
-            border-top: 1px solid #999;
-        }
-        
-        .dob-cell {
+        /* Center Content */
+        .center-content {
             flex: 1;
+            border: 1px solid #000;
             padding: 8px;
+        }
+        
+        .top-header-ads {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 8px;
+            font-size: 7px;
+        }
+        
+        .top-header-ads .ad-box {
+            flex: 1;
+        }
+        
+        .results-title {
             text-align: center;
-            border-right: 1px solid #999;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: bold;
-            color: #2a3a2a;
+            margin-bottom: 8px;
+            text-decoration: underline;
         }
         
-        .dob-cell:last-child {
-            border-right: none;
-        }
-        
-        /* Grades Section Header */
-        .grades-header {
-            background: linear-gradient(180deg, #e8d8e8 0%, #d8c8d8 50%, #c8b8c8 100%);
-            padding: 8px;
-            text-align: center;
-            font-size: 13px;
-            font-weight: bold;
-            color: #4a3a4a;
-            border: 1px solid #999;
-            border-bottom: none;
-            letter-spacing: 1px;
-        }
-        
-        /* Grades Table */
-        .grades-table {
+        /* Results Table */
+        .results-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12px;
-            border: 1px solid #999;
-            background: rgba(255,255,255,0.2);
+            font-size: 10px;
         }
         
-        .grades-table th {
-            background: linear-gradient(180deg, #d8e0d8 0%, #c8d0c8 100%);
-            padding: 6px;
-            border: 1px solid #999;
-            font-weight: bold;
-            color: #3a4a3a;
-            font-size: 11px;
-        }
-        
-        .grades-table td {
-            padding: 6px 10px;
-            border: 1px solid #999;
-            color: #2a3a2a;
-        }
-        
-        .subject-col {
-            text-align: left;
-            width: 45%;
-        }
-        
-        .grade-col {
-            text-align: center;
-            width: 15%;
-            font-weight: bold;
-        }
-        
-        .points-col {
-            text-align: center;
-            width: 20%;
-        }
-        
-        .words-col {
-            text-align: center;
-            width: 20%;
-        }
-        
-        .total-row {
-            font-weight: bold;
-            background: rgba(200, 210, 200, 0.3);
-        }
-        
-        .total-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
+        .results-table td {
+            border: 1px solid #000;
+            padding: 3px 5px;
             height: 18px;
-            background: #2a3a2a;
+        }
+        
+        .results-table td:first-child {
+            width: 35%;
+            font-weight: normal;
+        }
+        
+        .results-table td:last-child {
+            width: 65%;
+            font-weight: bold;
+        }
+        
+        /* Right Sidebar */
+        .right-sidebar {
+            width: 85px;
+            font-size: 7px;
+            line-height: 1.1;
+        }
+        
+        .right-sidebar .ad-box {
+            margin-bottom: 4px;
+            background: #000;
             color: white;
-            font-size: 11px;
-            margin-right: 8px;
-            font-weight: bold;
         }
         
-        .total-label-cell {
-            display: flex;
-            align-items: center;
+        .right-sidebar h3 {
+            font-size: 10px;
+            color: white;
+            margin-bottom: 3px;
         }
         
-        /* Life Skills Section */
-        .life-skills {
-            border: 1px solid #999;
-            border-top: none;
-            padding: 8px 15px;
-            font-size: 12px;
-            background: rgba(255,255,255,0.2);
-        }
-        
-        .life-skills-label {
-            color: #5a6a5a;
-        }
-        
-        .life-skills-value {
-            font-weight: bold;
-            color: #2a3a2a;
-        }
-        
-        /* Marks of Identification */
-        .identification {
-            border: 1px solid #999;
-            border-top: none;
-            padding: 8px 15px;
-            display: flex;
-            font-size: 12px;
-            background: rgba(255,255,255,0.2);
-        }
-        
-        .ident-label {
-            color: #5a6a5a;
-            min-width: 150px;
-        }
-        
-        .ident-box {
-            border: 1px solid #999;
-            padding: 5px 10px;
-            flex: 1;
-            background: rgba(255,255,255,0.4);
-        }
-        
-        .ident-text {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            font-size: 11px;
-            color: #3a3a3a;
-            line-height: 1.6;
-        }
-        
-        /* Bottom Section with Signatures */
-        .bottom-section {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            position: relative;
-        }
-        
-        .left-signature {
-            text-align: center;
-            width: 200px;
-        }
-        
-        .signature-line {
-            font-family: 'Brush Script MT', cursive;
-            font-size: 28px;
-            color: #1a1a1a;
-            margin-bottom: 5px;
-            transform: rotate(-5deg);
-        }
-        
-        .signature-title {
-            font-size: 11px;
-            color: #4a5a4a;
-            font-style: italic;
-        }
-        
-        .school-name {
-            font-size: 12px;
-            color: #3a4a3a;
-            font-weight: bold;
-        }
-        
-        .date-issue {
-            font-size: 11px;
-            color: #3a4a3a;
-            margin-top: 5px;
-        }
-        
-        /* School Stamp */
-        .stamp-section {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 0;
-        }
-        
-        .school-stamp {
-            width: 140px;
-            height: 140px;
-            border: 3px solid #4a4a9a;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #4a4a9a;
-            font-size: 9px;
-            text-align: center;
-            position: relative;
-            opacity: 0.8;
-            transform: rotate(-15deg);
-        }
-        
-        .stamp-text {
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        
-        .stamp-date {
-            border-bottom: 1px dotted #4a4a9a;
-            padding-bottom: 2px;
-            margin: 3px 0;
-        }
-        
-        /* Right Signature */
-        .right-signature {
-            text-align: center;
-            width: 200px;
-        }
-        
-        .sec-signature {
-            font-family: 'Brush Script MT', cursive;
-            font-size: 24px;
-            color: #1a1a1a;
-            margin-bottom: 5px;
-        }
-        
-        .sec-title {
-            font-size: 12px;
-            color: #3a4a3a;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .sec-subtitle {
-            font-size: 11px;
-            color: #4a5a4a;
-        }
-        
-        /* Barcode */
-        .barcode-section {
-            margin-top: 15px;
-            text-align: right;
-        }
-        
-        .barcode {
-            display: inline-block;
-            width: 200px;
-            height: 40px;
-            background: repeating-linear-gradient(90deg, 
-                #000 0px, #000 2px, 
-                transparent 2px, transparent 4px,
-                #000 4px, #000 5px,
-                transparent 5px, transparent 8px
-            );
-        }
-        
-        /* Footer Notes */
-        .footer-notes {
-            margin-top: 10px;
-            font-size: 9px;
-            color: #5a6a5a;
-            line-height: 1.4;
-            border-top: 1px solid #ccc;
-            padding-top: 8px;
-        }
-        
-        .note-item {
+        .right-sidebar p {
             margin-bottom: 2px;
         }
         
-        /* Watermark text overlay */
-        .watermark-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-30deg);
-            font-size: 60px;
-            color: rgba(0,0,0,0.03);
-            font-weight: bold;
-            pointer-events: none;
-            white-space: nowrap;
-            z-index: 1;
+        /* Bottom Ads */
+        .bottom-ads {
+            display: flex;
+            gap: 4px;
+            margin-top: 4px;
+            font-size: 7px;
         }
         
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            .certificate-wrapper {
-                box-shadow: none;
-            }
+        .bottom-ads .ad-box {
+            flex: 1;
+        }
+        
+        .bottom-ads h3 {
+            font-size: 9px;
+            font-weight: bold;
+        }
+        
+        .large-ad {
+            flex: 2;
+        }
+        
+        /* Footer Text */
+        .footer-text {
+            font-size: 8px;
+            margin-top: 6px;
+            line-height: 1.2;
+        }
+        
+        .footer-text p {
+            margin-bottom: 3px;
+        }
+        
+        /* Specific styling for black ads */
+        .black-ad {
+            background: #000;
+            color: white;
+            border: 1px solid #000;
+        }
+        
+        .black-ad h3, .black-ad p, .black-ad div {
+            color: white;
+        }
+        
+        /* Contact info styling */
+        .contact-info {
+            font-size: 7px;
+            margin-top: 2px;
+        }
+        
+        .phone {
+            font-weight: bold;
+            font-size: 8px;
+        }
+        
+        /* Special boxes */
+        .admissions-box {
+            background: #000;
+            color: white;
+            padding: 4px;
+        }
+        
+        .admissions-box h2 {
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+        
+        .courses-list {
+            font-size: 7px;
+            line-height: 1.2;
+        }
+        
+        /* Gowtham specific */
+        .gowtham-box {
+            background: #000;
+            color: white;
+            text-align: center;
+        }
+        
+        .gowtham-box h3 {
+            color: white;
+            font-size: 11px;
+        }
+        
+        /* Baba Institute */
+        .baba-box {
+            background: #000;
+            color: white;
+            padding: 4px;
+        }
+        
+        .baba-box h3 {
+            color: white;
+            font-size: 9px;
+        }
+        
+        .baba-box .highlight {
+            color: #ffff00;
+        }
+        
+        /* Saastra box */
+        .saastra-box {
+            border: 1px solid #000;
+            padding: 3px;
+            font-size: 7px;
+        }
+        
+        /* Text decorations */
+        .underline {
+            text-decoration: underline;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+        
+        /* Small text */
+        .very-small {
+            font-size: 6px;
+        }
+        
+        /* Manabadi specific */
+        .manabadi h3 {
+            font-size: 11px;
+            color: white;
+        }
+        
+        .manabadi .free {
+            background: white;
+            color: #000;
+            display: inline-block;
+            padding: 0 2px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div class="certificate-wrapper">
-        <div class="guilloche-border"></div>
-        <div class="inner-border"></div>
-        <div class="security-bg"></div>
-        <div class="watermark"></div>
-        <div class="watermark-text">BOARD OF SECONDARY EDUCATION</div>
-        
-        <div class="content">
-            <!-- Header -->
-            <div class="header">
-                <div class="board-title">Board of Secondary Education</div>
-                <div class="board-subtitle">ANDHRA PRADESH, INDIA</div>
+    <div class="container">
+        <!-- Top Header Ads -->
+        <div class="header-ads">
+            <div class="ad-box" style="width: 18%;">
+                <div class="college-name">Sri Mittapalli<br>College of Engg</div>
+                <div>EAMCET CODE: <b>MPLG</b></div>
+                <div>Branches:</div>
+                <div>• MECH • CSE<br>• CIVIL • ECE<br>• EEE</div>
+                <div>NH-5, Guntur<br>Ph: 9000447117</div>
             </div>
-            
-            <!-- Top Section -->
-            <div class="top-section">
-                <div class="left-section">
-                    <div class="ll-number">LL 0104771</div>
-                    <div class="qr-placeholder"></div>
+            <div class="ad-box" style="width: 42%;">
+                <div style="font-size: 10px; font-weight: bold;">SWARNANDHRA INSTITUTE OF ENGG & TECH</div>
+                <div style="font-size: 7px;">Approved by AICTE,New Delhi & Affiliated to JNTUK-Kakinada</div>
+                <div style="font-size: 7px;">Accredited by NAAC with "A" Grade(CGPA:3.04/4) Seetharampuram, Narsapur-534280</div>
+                <div style="font-size: 7px;">www.swarnandhra.edu.in Ph: 08814-240463/64/65/66, 09848368054</div>
+                <div style="margin-top: 4px; border-top: 1px solid #000; padding-top: 3px;">
+                    <div style="font-weight: bold; font-size: 9px;">Godavari Institute of Engg & Technology</div>
+                    <div style="font-size: 6px;">APPROVED BY AICTE | NAAC 'A' GRADE | ACCREDITED BY NBA | RECOGNIZED BY UGC, U/Sec. 2(f) & 12(B) | PERMANENTLY AFFILIATED TO JNTUK</div>
+                    <div style="font-size: 6px;">Automobile, CIVIL, CSE, ECE, EEE, IT, MECH., MINING<br>Petroleum, B.Pharm, Pharm.D M.Pharm, M.Tech, MBA, Diploma</div>
+                    <div style="font-size: 6px;">GIET Campus, Chaitanya Knowledge City, NH6, Rajahmundry, East Godavari Ph: 0883-2484828/3</div>
+                    <div style="font-size: 7px; font-weight: bold;">Counseling Code: GIER</div>
+                </div>
+            </div>
+            <div class="ad-box black" style="width: 22%;">
+                <div style="font-size: 9px; font-weight: bold;">BHARAT<br>UNIVERSITY (CHENNAI)</div>
+                <div style="font-size: 7px; margin-top: 2px;">awarded<br>INDIA'S No.1<br>Best Multi Stream Uni<br>at National Education<br>Excellence Award 2014</div>
+                <div style="font-size: 6px; margin-top: 2px;">B.Tech, B.Arch, M.Tech,<br>MBA, MCA, Ph.D, Ag, B.Sc</div>
+                <div style="font-size: 6px; margin-top: 2px;">No Donation 37,500 for sea</div>
+                <div class="phone" style="font-size: 7px; margin-top: 2px;">Ph: 9160902969<br>9177177756<br>9949476452</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Sidebar -->
+            <div class="left-sidebar">
+                <div class="ad-box admissions-box">
+                    <h2>ADMISSIONS<br>GUIDANCE</h2>
+                    <div style="text-align: center; font-size: 8px; font-weight: bold; margin-bottom: 4px;">All Over INDIA<br>Low Packages</div>
+                    <div class="courses-list">
+                        <div>DM, M.Ch., MDS,<br>MD, MS, DCH, DGO,<br>DMRD, DDVL<br>D.Ortho, DA, DO</div>
+                        <div style="margin-top: 4px;">☑ MBBS<br>Total Package 42L-95L</div>
+                        <div>☑ BDS, MDS</div>
+                        <div>☑ BAMS, BHMS,<br>☑ PHARM.D</div>
+                        <div>☑ B.PHARM, M.PHARM<br>☑ B.Ed, D.Ed(TTC),<br>☑ B.P.Ed, UG.P.Ed</div>
+                    </div>
                 </div>
                 
-                <div class="center-section">
-                    <div class="emblem">
-                        <div class="emblem-inner">
-                            <div class="emblem-text-top">GOVERNMENT OF ANDHRA PRADESH</div>
-                            <div class="ashoka-symbol">☸</div>
-                            <div class="emblem-text-bottom">सत्यमेव जयते</div>
+                <div class="ad-box gowtham-box">
+                    <div style="font-size: 10px; font-weight: bold;">Gowtham</div>
+                    <div style="font-size: 7px;">Educational Consultancy</div>
+                    <div style="font-size: 6px; margin-top: 2px;">www.gcsgowtham.com<br>gcsgowtham@gmail.com</div>
+                    <div class="phone" style="margin-top: 4px; font-size: 9px;">9966880118<br>9703773222<br>9490788222</div>
+                </div>
+                
+                <div style="border: 1px solid #000; padding: 2px; font-size: 8px; text-align: center; font-weight: bold; writing-mode: vertical-rl; text-orientation: mixed; height: 150px; display: flex; align-items: center; justify-content: center;">
+                    neni<br>maiah<br>Colleges
+                </div>
+            </div>
+
+            <!-- Center Results -->
+            <div class="center-content">
+                <!-- Top mini ads -->
+                <div class="top-header-ads">
+                    <div class="ad-box" style="flex: 1;">
+                        <div style="font-size: 8px; font-weight: bold;">Sri Mittapalli<br>College of Engg</div>
+                        <div style="font-size: 6px;">EAMCET CODE: MPLG<br>Branches:<br>• MECH • CSE<br>• CIVIL • ECE<br>• EEE</div>
+                        <div style="font-size: 6px;">NH-5, Guntur<br>Ph: 9000447117</div>
+                    </div>
+                    <div class="ad-box" style="flex: 2;">
+                        <div style="font-size: 9px; font-weight: bold;">SWARNANDHRA INSTITUTE OF ENGG & TECH</div>
+                        <div style="font-size: 6px;">Approved by AICTE,New Delhi & Affiliated to JNTUK-Kakinada</div>
+                        <div style="font-size: 6px;">Accredited by NAAC with "A" Grade(CGPA:3.04/4) Seetharampuram, Narsapur-534280</div>
+                        <div style="font-size: 6px;">www.swarnandhra.edu.in Ph: 08814-240463/64/65/66, 09848368054</div>
+                        <div style="margin-top: 3px; border-top: 1px solid #000; padding-top: 2px;">
+                            <div style="font-weight: bold; font-size: 8px;">Godavari Institute of Engg & Technology</div>
+                            <div style="font-size: 5px;">APPROVED BY AICTE | NAAC 'A' GRADE | ACCREDITED BY NBA | RECOGNIZED BY UGC</div>
+                            <div style="font-size: 5px;">Automobile, CIVIL, CSE, ECE, EEE, IT, MECH., MINING</div>
+                            <div style="font-size: 5px;">GIET Campus, Chaitanya Knowledge City, NH6, Rajahmundry Ph: 0883-2484828/3</div>
+                            <div style="font-size: 6px; font-weight: bold;">Counseling Code: GIER</div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="right-section">
-                    <div class="photo-placeholder">PHOTO</div>
-                </div>
-            </div>
-            
-            <!-- Certificate Title -->
-            <div class="cert-title-section">
-                <div class="cert-title">SECONDARY SCHOOL CERTIFICATE</div>
-                <div class="cert-subtitle">
-                    <span>REGULAR</span>
-                    <span>PC/06/05326/0094771/8</span>
-                </div>
-            </div>
-            
-            <!-- Student Information -->
-            <div class="student-info">
-                <div class="info-row">
-                    <span class="info-label">CERTIFIED THAT</span>
-                    <span class="info-value">AGURU MANOJ KUMAR</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">FATHER NAME :</span>
-                    <span class="info-value">AGURU MOHAN RAO</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">MOTHER NAME:</span>
-                    <span class="info-value">MUGADA VISALAKSHI</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">bearing Roll No.</span>
-                    <span class="info-value">1206123129</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">belonging to</span>
-                    <span class="info-value">SURESH HIGH SCHOOL VIDYANAGAR VENKAMPETA</span>
-                </div>
-                <div class="info-row gpa-row">
-                    <span class="gpa-text">has appeared and PASSED SSC EXAMINATION held in MARCH 2012 with GPA</span>
-                    <span class="gpa-highlight">9.0</span>
-                </div>
-                <div class="medium-row">
-                    <span class="medium-label">and</span>
-                    <span class="medium-value">ENGLISH</span>
-                    <span class="medium-text">as medium of instruction.</span>
-                </div>
-            </div>
-            
-            <!-- Date of Birth -->
-            <div class="dob-section">
-                <div class="dob-header">DATE OF BIRTH</div>
-                <div class="dob-content">
-                    <div class="dob-cell">05/06/1997</div>
-                    <div class="dob-cell">ZERO FIVE</div>
-                    <div class="dob-cell">JUNE</div>
-                    <div class="dob-cell">ONE NINE NINE SEVEN</div>
-                </div>
-            </div>
-            
-            <!-- Grades Header -->
-            <div class="grades-header">
-                THE CANDIDATE SECURED THE FOLLOWING GRADES AND GRADE POINTS
-            </div>
-            
-            <!-- Grades Table -->
-            <table class="grades-table">
-                <thead>
-                    <tr>
-                        <th>SUBJECT</th>
-                        <th>GRADES</th>
-                        <th colspan="2">GRADE POINTS</th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th>In Figures</th>
-                        <th>In Words</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="subject-col">FIRST LANGUAGE : ( TELUGU/SANSKRIT )</td>
-                        <td class="grade-col">A1</td>
-                        <td class="points-col">10</td>
-                        <td class="words-col">ONE ZERO</td>
-                    </tr>
-                    <tr>
-                        <td class="subject-col">THIRD LANGUAGE : ENGLISH</td>
-                        <td class="grade-col">B1</td>
-                        <td class="points-col">08</td>
-                        <td class="words-col">ZERO EIGHT</td>
-                    </tr>
-                    <tr>
-                        <td class="subject-col">MATHEMATICS :</td>
-                        <td class="grade-col">A1</td>
-                        <td class="points-col">10</td>
-                        <td class="words-col">ONE ZERO</td>
-                    </tr>
-                    <tr>
-                        <td class="subject-col">GENERAL SCIENCE :</td>
-                        <td class="grade-col">A1</td>
-                        <td class="points-col">10</td>
-                        <td class="words-col">ONE ZERO</td>
-                    </tr>
-                    <tr>
-                        <td class="subject-col">SOCIAL STUDIES :</td>
-                        <td class="grade-col">A2</td>
-                        <td class="points-col">09</td>
-                        <td class="words-col">ZERO NINE</td>
-                    </tr>
-                    <tr>
-                        <td class="subject-col">SECOND LANGUAGE : ( HINDI )</td>
-                        <td class="grade-col">B2</td>
-                        <td class="points-col">07</td>
-                        <td class="words-col">ZERO SEVEN</td>
-                    </tr>
-                    <tr class="total-row">
-                        <td class="subject-col total-label-cell">
-                            <span class="total-icon">54</span>
-                            GRADE POINTS TOTAL :
-                        </td>
-                        <td class="grade-col"></td>
-                        <td class="points-col">54</td>
-                        <td class="words-col">FIVE FOUR</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <!-- Life Skills -->
-            <div class="life-skills">
-                <span class="life-skills-label">Life Skills Education :</span>
-                <span class="life-skills-value">GRADE SECURED : A</span>
-            </div>
-            
-            <!-- Marks of Identification -->
-            <div class="identification">
-                <div class="ident-label">Marks of Identification</div>
-                <div class="ident-box">
-                    <div class="ident-text">1. A MOLE ON THE LEFT FOOT</div>
-                    <div class="ident-text">2. A MOLE ON THE BACK</div>
-                </div>
-            </div>
-            
-            <!-- Bottom Section -->
-            <div class="bottom-section">
-                <div class="left-signature">
-                    <div class="signature-line">Qras</div>
-                    <div class="signature-title">Head Master</div>
-                    <div class="school-name">SURESH HIGH SCHOOL</div>
-                    <div class="school-name">VENKAMPETA</div>
-                    <div class="date-issue">Date of Issue : 24-May-2012</div>
-                    <div style="font-size: 10px; color: #666; margin-top: 5px;">PARVATIPURAM-535 501</div>
-                </div>
-                
-                <div class="stamp-section">
-                    <div class="school-stamp">
-                        <div class="stamp-text">SURESH HIGH SCHOOL</div>
-                        <div class="stamp-date">Date ...........</div>
-                        <div class="stamp-text">Vidyanagar</div>
-                        <div class="stamp-text">VENKAMPETA</div>
-                        <div class="stamp-text">PARVATIPURAM</div>
+                    <div class="ad-box black" style="flex: 1;">
+                        <div style="font-size: 8px; font-weight: bold;">BHARAT<br>UNIVERSITY</div>
+                        <div style="font-size: 6px;">INDIA'S No.1<br>Best Multi Stream Uni</div>
+                        <div style="font-size: 5px; margin-top: 2px;">B.Tech, B.Arch, M.Tech<br>MBA, MCA, Ph.D</div>
+                        <div style="font-size: 6px; margin-top: 2px;">Ph: 9160902969</div>
                     </div>
                 </div>
+
+                <div class="results-title">EAMCET - 2014 Marks</div>
                 
-                <div class="right-signature">
-                    <div class="sec-signature">Angrw</div>
-                    <div class="sec-title">SECRETARY</div>
-                    <div class="sec-subtitle">BOARD OF SECONDARY EDUCATION</div>
-                    <div class="sec-subtitle">A.P. HYDERABAD</div>
+                <table class="results-table">
+                    <tr>
+                        <td>Hallticket No</td>
+                        <td>4508108</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>AGURU MANOJ KUMAR</td>
+                    </tr>
+                    <tr>
+                        <td>Father Name</td>
+                        <td>AGURU MOHAN RAO</td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>M</td>
+                    </tr>
+                    <tr>
+                        <td>Local Area</td>
+                        <td>AU</td>
+                    </tr>
+                    <tr>
+                        <td>Category</td>
+                        <td>BC-B</td>
+                    </tr>
+                    <tr>
+                        <td>Combined Score</td>
+                        <td>70.38</td>
+                    </tr>
+                    <tr>
+                        <td>Group Total</td>
+                        <td>587.00</td>
+                    </tr>
+                    <tr>
+                        <td>Group Max.</td>
+                        <td>600</td>
+                    </tr>
+                    <tr>
+                        <td>Inter Weightage</td>
+                        <td>24.45</td>
+                    </tr>
+                    <tr>
+                        <td>EAMCET Weightage</td>
+                        <td>45.93</td>
+                    </tr>
+                    <tr>
+                        <td>Mathematics</td>
+                        <td>32</td>
+                    </tr>
+                    <tr>
+                        <td>Physics</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Chemistry</td>
+                        <td>36</td>
+                    </tr>
+                    <tr>
+                        <td>EAMCET Marks</td>
+                        <td>98</td>
+                    </tr>
+                    <tr>
+                        <td>Rank</td>
+                        <td>5289</td>
+                    </tr>
+                    <tr>
+                        <td>Local Rank</td>
+                        <td>161</td>
+                    </tr>
+                    <tr>
+                        <td>Result</td>
+                        <td>QUALIFIED IN EAMCET</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="right-sidebar">
+                <div class="ad-box manabadi">
+                    <h3>MANABADI</h3>
+                    <div style="font-size: 6px; margin-bottom: 4px;">Consultancy Services</div>
+                    <div style="font-size: 6px;">Provide Admissions in<br>Under Management Quota<br>100 % Placement<br>Top Colleges & Universities</div>
+                    <div style="font-size: 7px; font-weight: bold; margin: 4px 0;">CSE, ECE, MECH<br>CIVIL, EEE, IT, Aero<br>E & I And MINING</div>
+                    <div style="margin: 4px 0;"><span class="free">Free</span> <span style="font-size: 6px;">Not Qualified<br>Admission in HYD</span></div>
+                    <div class="phone" style="font-size: 9px;">Ph : 9701531567<br>9030777444</div>
+                </div>
+                
+                <div class="ad-box manabadi">
+                    <h3>MANABADI</h3>
+                    <div style="font-size: 6px; margin-bottom: 4px;">Consultancy Services</div>
+                    <div style="font-size: 6px;">Provide Admissions in<br>Under Management Quota</div>
+                    <div style="font-size: 7px; font-weight: bold; margin: 4px 0;">B.PHARMA<br>PHARMA-D<br>AGBSC<br>BDS & MBBS</div>
+                    <div style="font-size: 6px; margin: 4px 0;">AP, TG, KARNATAKA</div>
+                    <div class="phone" style="font-size: 9px;">Ph : 9701531567<br>9030777444</div>
+                </div>
+                
+                <div class="ad-box" style="background: white; color: black; border: 1px solid #000;">
+                    <div style="font-size: 7px;">
+                        <div style="font-weight: bold;">BHARAT</div>
+                        <div style="font-size: 6px;">UNIVERSITY (CHENNAI)<br>awarded<br>INDIA'S No.1<br>Best Multi Stream Uni<br>at National Education<br>Excellence Award 2014</div>
+                        <div style="font-size: 5px; margin-top: 2px;">B.Tech, B.Arch, M.Tech<br>MBA, MCA, Ph.D, Ag, B.Sc</div>
+                        <div style="font-size: 5px;">No Donation 37,500 for sea</div>
+                        <div style="font-size: 6px; font-weight: bold; margin-top: 2px;">Ph: 9160902969<br>9177177756<br>9949476452</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ads -->
+        <div class="bottom-ads">
+            <div class="ad-box baba-box large-ad">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="font-size: 20px;">◉</div>
+                    <div>
+                        <div style="font-size: 10px; font-weight: bold;">BABA INSTITUTE OF TECHNOLOGY AND SCIENCES</div>
+                        <div style="font-size: 7px;">Approved by AICTE, New Delhi & Affiliated to JNTUK, An ISO 9001:2008 Certified.</div>
+                        <div style="margin-top: 4px; font-size: 8px;">
+                            <span class="highlight">► Emerging as VIZAG'S NO.1 Engg College</span><br>
+                            <span class="highlight">► Generating University Toppers Since 2012</span><br>
+                            B.Tech : CIVIL, EEE, MECH, ECE, CSE<br>
+                            M.Tech : CAD/CAM & TE, SE, VLSI, CS, PEED
+                        </div>
+                    </div>
+                    <div style="text-align: right; font-size: 8px; margin-left: auto;">
+                        <div>EAMCET-ICET-PGECET Code: <b>BABA</b></div>
+                        <div>www.bitsvizag.com</div>
+                        <div>Ph: 7799885355/56/57/58</div>
+                        <div style="background: white; color: black; padding: 2px 6px; margin-top: 4px; font-weight: bold; display: inline-block;">100% PLACEMENT</div>
+                    </div>
                 </div>
             </div>
             
-            <!-- Barcode -->
-            <div class="barcode-section">
-                <div class="barcode"></div>
+            <div class="ad-box" style="width: 120px;">
+                <div style="font-size: 7px; text-align: center;">
+                    <div style="font-weight: bold; margin-bottom: 2px;">శాస్త్ర కళాశాల</div>
+                    <div style="font-weight: bold; font-size: 8px; margin-bottom: 2px;">SAASTRA COLLEGE</div>
+                    <div style="font-size: 6px;">Pharm.D, B.Pharm<br>M.Pharm, Nursing<br>MBA& MCA</div>
+                    <div style="font-size: 6px; margin-top: 2px;">EAMCET Code : SCON<br>ICET Code : SSTR<br>Nursing Code : BOLI</div>
+                    <div style="font-size: 5px; margin-top: 2px;">Inter MPC Students are<br>All Eligible for M.Pharm & Pharm D</div>
+                    <div style="font-size: 6px; font-weight: bold; margin-top: 2px;">Ph : 0861 2334433<br>8099920678<br>9441885915</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Row -->
+        <div style="display: flex; gap: 4px; margin-top: 4px;">
+            <div class="ad-box" style="width: 80px; font-size: 7px; text-align: center; writing-mode: vertical-rl; text-orientation: mixed; height: 100px; display: flex; align-items: center; justify-content: center;">
+                <div>neni<br>maiah<br>Colleges</div>
             </div>
             
-            <!-- Footer Notes -->
-            <div class="footer-notes">
-                <div class="note-item">1. Life skills Education : The PARVATHIPURAM will be incorporated by the respective Head of the Institution (Dist.)</div>
-                <div class="note-item">2. Any corrections in the certificate will not be entertained after one year from the date of issue.</div>
-                <div class="note-item">3. Any unauthorised correction in the certificate will result in cancellation of certificate.</div>
-                <div class="note-item">4. The Grades with asterisk indicate the old grades secured in previous appearances.</div>
+            <div class="ad-box baba-box" style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="font-size: 18px;">◉</div>
+                    <div>
+                        <div style="font-size: 9px; font-weight: bold;">BABA INSTITUTE OF TECHNOLOGY AND SCIENCES</div>
+                        <div style="font-size: 6px;">Approved by AICTE, New Delhi & Affiliated to JNTUK, An ISO 9001:2008 Certified.</div>
+                        <div style="margin-top: 3px; font-size: 7px;">
+                            <span class="highlight">► Emerging as VIZAG'S NO.1 Engg College</span><br>
+                            <span class="highlight">► Generating University Toppers Since 2012</span><br>
+                            B.Tech : CIVIL, EEE, MECH, ECE, CSE<br>
+                            M.Tech : CAD/CAM & TE, SE, VLSI, CS, PEED
+                        </div>
+                    </div>
+                    <div style="text-align: right; font-size: 7px; margin-left: auto;">
+                        <div>EAMCET-ICET-PGECET Code: <b>BABA</b></div>
+                        <div>www.bitsvizag.com</div>
+                        <div>Ph: 7799885355/56/57/58</div>
+                        <div style="background: white; color: black; padding: 2px 6px; margin-top: 4px; font-weight: bold; display: inline-block;">100% PLACEMENT</div>
+                    </div>
+                </div>
             </div>
+            
+            <div class="ad-box" style="width: 140px; font-size: 6px;">
+                <div style="text-align: center; font-weight: bold; margin-bottom: 2px;">శాస్త్ర కళాశాల</div>
+                <div style="text-align: center; font-weight: bold; font-size: 8px; margin-bottom: 2px;">SAASTRA COLLEGE</div>
+                <div style="font-size: 6px;">Pharm.D, B.Pharm<br>M.Pharm, Nursing<br>MBA& MCA</div>
+                <div style="font-size: 6px; margin-top: 2px;">EAMCET Code : SCON<br>ICET Code : SSTR<br>Nursing Code : BOLI</div>
+                <div style="font-size: 5px; margin-top: 2px;">Inter MPC Students are<br>All Eligible for M.Pharm & Pharm D</div>
+                <div style="font-size: 6px; font-weight: bold; margin-top: 2px; text-align: center;">Ph : 0861 2334433<br>8099920678<br>9441885915</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-text">
+            <p>Result (Q => Qualified, NQ => Not Qualified) ; Gender (M => Male , F => Female)</p>
+            <p>Category (BA => BC-A, BB => BC-B, BC => BC-C, BD => BC-D )</p>
+            <p>Unspecified Local Area : (The number of Candidates who didn't specify their Local Area)</p>
+            <p>Local Area is based on the data provided by the candidates. Hence, any error in this information is not the responsibility of the Convener. This is only for an idea of your position in that category.</p>
         </div>
     </div>
 </body>
