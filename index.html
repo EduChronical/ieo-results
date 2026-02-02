@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EAMCET 2014 Marks Sheet</title>
+    <title>Recruitment of Probationary Officers - SBI</title>
     <style>
         * {
             margin: 0;
@@ -12,580 +12,513 @@
         }
         
         body {
-            font-family: "Times New Roman", Times, serif;
-            background: #f5f5f5;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f0f0f0;
+            font-size: 12px;
+            color: #333;
         }
         
-        .container {
-            width: 210mm;
+        /* Header */
+        .header {
+            background-color: #1a1a1a;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .sbi-logo {
             background: white;
-            padding: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        
-        /* Header Ads Row */
-        .header-ads {
+            padding: 5px 15px;
             display: flex;
-            gap: 4px;
-            margin-bottom: 4px;
-            font-size: 8px;
-            line-height: 1.1;
+            align-items: center;
+            gap: 8px;
         }
         
-        .ad-box {
-            border: 1px solid #000;
-            padding: 3px;
-            flex: 1;
+        .sbi-logo img {
+            height: 30px;
         }
         
-        .ad-box h3 {
-            font-size: 9px;
+        .sbi-text {
+            color: #00a0e3;
+            font-size: 24px;
             font-weight: bold;
-            margin-bottom: 2px;
-            text-transform: uppercase;
         }
         
-        .ad-box.black {
-            background: #000;
+        .menu-btn {
             color: white;
-        }
-        
-        .ad-box.black h3 {
-            color: white;
-        }
-        
-        /* Main Content Area */
-        .main-content {
+            font-size: 14px;
             display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+        
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
             gap: 4px;
         }
         
-        /* Left Sidebar */
-        .left-sidebar {
-            width: 85px;
-            font-size: 7px;
-            line-height: 1.1;
+        .menu-icon span {
+            width: 20px;
+            height: 2px;
+            background: white;
         }
         
-        .left-sidebar .ad-box {
-            margin-bottom: 4px;
-        }
-        
-        .left-sidebar h3 {
-            font-size: 10px;
-            background: #000;
-            color: white;
-            padding: 2px;
-            margin: -3px -3px 3px -3px;
-        }
-        
-        .left-sidebar ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        .left-sidebar li {
-            margin-bottom: 1px;
-        }
-        
-        .left-sidebar .college-name {
-            font-weight: bold;
-            font-size: 8px;
-        }
-        
-        /* Center Content */
-        .center-content {
-            flex: 1;
-            border: 1px solid #000;
-            padding: 8px;
-        }
-        
-        .top-header-ads {
+        /* Notice Bar */
+        .notice-bar {
+            background: #ffd700;
+            padding: 8px 15px;
             display: flex;
-            gap: 4px;
-            margin-bottom: 8px;
-            font-size: 7px;
-        }
-        
-        .top-header-ads .ad-box {
-            flex: 1;
-        }
-        
-        .results-title {
-            text-align: center;
+            justify-content: space-between;
+            align-items: center;
             font-size: 11px;
             font-weight: bold;
-            margin-bottom: 8px;
-            text-decoration: underline;
         }
         
-        /* Results Table */
-        .results-table {
+        .notice-left {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .important {
+            background: #000;
+            color: #ffd700;
+            padding: 3px 8px;
+            font-size: 10px;
+        }
+        
+        .caution {
+            color: #000;
+        }
+        
+        .latest-ann {
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        /* Title Section */
+        .title-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .title-section h1 {
+            color: #0066cc;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .title-section h2 {
+            color: #0066cc;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        
+        .title-section h3 {
+            color: #0066cc;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        /* Candidate Info */
+        .candidate-info {
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+        
+        .info-row {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            width: 50%;
+            padding: 8px 12px;
+            background: #f9f9f9;
+            border-right: 1px solid #ccc;
+            font-weight: normal;
+            color: #333;
+        }
+        
+        .info-value {
+            width: 50%;
+            padding: 8px 12px;
+            color: #c00;
+            font-weight: bold;
+        }
+        
+        .info-row.two-col .info-label {
+            width: 25%;
+        }
+        
+        .info-row.two-col .info-value {
+            width: 25%;
+            border-right: 1px solid #ccc;
+        }
+        
+        .info-row.two-col .info-value:last-child {
+            border-right: none;
+        }
+        
+        /* Section A */
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .score-box {
+            border: 2px solid #333;
+            padding: 8px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .subsection-title {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        /* Cutoff Table */
+        .cutoff-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 10px;
+            margin-bottom: 10px;
         }
         
-        .results-table td {
-            border: 1px solid #000;
-            padding: 3px 5px;
-            height: 18px;
-        }
-        
-        .results-table td:first-child {
-            width: 35%;
+        .cutoff-table th {
+            border: 1px solid #999;
+            padding: 8px;
+            background: #f5f5f5;
             font-weight: normal;
+            font-size: 11px;
         }
         
-        .results-table td:last-child {
-            width: 65%;
+        .cutoff-table td {
+            border: 1px solid #999;
+            padding: 8px;
+            text-align: center;
+            color: #c00;
+            font-size: 11px;
+        }
+        
+        /* Status Box */
+        .status-box {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+            background: #f9f9f9;
+            margin: 10px 0;
+        }
+        
+        .status-box.qualified {
+            color: #0066cc;
             font-weight: bold;
-        }
-        
-        /* Right Sidebar */
-        .right-sidebar {
-            width: 85px;
-            font-size: 7px;
-            line-height: 1.1;
-        }
-        
-        .right-sidebar .ad-box {
-            margin-bottom: 4px;
-            background: #000;
-            color: white;
-        }
-        
-        .right-sidebar h3 {
-            font-size: 10px;
-            color: white;
-            margin-bottom: 3px;
-        }
-        
-        .right-sidebar p {
-            margin-bottom: 2px;
-        }
-        
-        /* Bottom Ads */
-        .bottom-ads {
-            display: flex;
-            gap: 4px;
-            margin-top: 4px;
-            font-size: 7px;
-        }
-        
-        .bottom-ads .ad-box {
-            flex: 1;
-        }
-        
-        .bottom-ads h3 {
-            font-size: 9px;
-            font-weight: bold;
-        }
-        
-        .large-ad {
-            flex: 2;
-        }
-        
-        /* Footer Text */
-        .footer-text {
-            font-size: 8px;
-            margin-top: 6px;
-            line-height: 1.2;
-        }
-        
-        .footer-text p {
-            margin-bottom: 3px;
-        }
-        
-        /* Specific styling for black ads */
-        .black-ad {
-            background: #000;
-            color: white;
-            border: 1px solid #000;
-        }
-        
-        .black-ad h3, .black-ad p, .black-ad div {
-            color: white;
-        }
-        
-        /* Contact info styling */
-        .contact-info {
-            font-size: 7px;
-            margin-top: 2px;
-        }
-        
-        .phone {
-            font-weight: bold;
-            font-size: 8px;
-        }
-        
-        /* Special boxes */
-        .admissions-box {
-            background: #000;
-            color: white;
-            padding: 4px;
-        }
-        
-        .admissions-box h2 {
             font-size: 12px;
+        }
+        
+        .status-box.not-selected {
+            color: #333;
+            font-weight: bold;
+            font-size: 12px;
+            border: 2px solid #999;
+        }
+        
+        .status-box.selected {
+            color: #0066cc;
+            font-weight: bold;
+            font-size: 12px;
+            border: 2px solid #999;
+        }
+        
+        /* Note */
+        .note {
             text-align: center;
-            margin-bottom: 4px;
-        }
-        
-        .courses-list {
-            font-size: 7px;
-            line-height: 1.2;
-        }
-        
-        /* Gowtham specific */
-        .gowtham-box {
-            background: #000;
-            color: white;
-            text-align: center;
-        }
-        
-        .gowtham-box h3 {
-            color: white;
             font-size: 11px;
+            color: #666;
+            margin: 10px 0;
         }
         
-        /* Baba Institute */
-        .baba-box {
-            background: #000;
-            color: white;
-            padding: 4px;
+        /* Final Score Section */
+        .final-score-box {
+            border: 1px solid #ccc;
+            padding: 15px;
         }
         
-        .baba-box h3 {
-            color: white;
-            font-size: 9px;
+        .score-breakdown {
+            border: 1px solid #999;
+            margin: 10px 0;
         }
         
-        .baba-box .highlight {
-            color: #ffff00;
+        .breakdown-row {
+            display: flex;
+            border-bottom: 1px solid #999;
         }
         
-        /* Saastra box */
-        .saastra-box {
-            border: 1px solid #000;
-            padding: 3px;
-            font-size: 7px;
+        .breakdown-row:last-child {
+            border-bottom: none;
         }
         
-        /* Text decorations */
-        .underline {
-            text-decoration: underline;
+        .breakdown-label {
+            flex: 1;
+            padding: 10px;
+            border-right: 1px solid #999;
         }
         
-        .bold {
+        .breakdown-value {
+            width: 100px;
+            padding: 10px;
+            text-align: center;
+            color: #090;
             font-weight: bold;
         }
         
-        /* Small text */
-        .very-small {
-            font-size: 6px;
-        }
-        
-        /* Manabadi specific */
-        .manabadi h3 {
+        /* Merit Note */
+        .merit-note {
+            text-align: center;
             font-size: 11px;
-            color: white;
+            color: #666;
+            margin: 15px 0;
         }
         
-        .manabadi .free {
-            background: white;
-            color: #000;
-            display: inline-block;
-            padding: 0 2px;
-            font-weight: bold;
+        /* Back Button */
+        .back-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 8px 25px;
+            background: #4a0080;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Top Header Ads -->
-        <div class="header-ads">
-            <div class="ad-box" style="width: 18%;">
-                <div class="college-name">Sri Mittapalli<br>College of Engg</div>
-                <div>EAMCET CODE: <b>MPLG</b></div>
-                <div>Branches:</div>
-                <div>• MECH • CSE<br>• CIVIL • ECE<br>• EEE</div>
-                <div>NH-5, Guntur<br>Ph: 9000447117</div>
-            </div>
-            <div class="ad-box" style="width: 42%;">
-                <div style="font-size: 10px; font-weight: bold;">SWARNANDHRA INSTITUTE OF ENGG & TECH</div>
-                <div style="font-size: 7px;">Approved by AICTE,New Delhi & Affiliated to JNTUK-Kakinada</div>
-                <div style="font-size: 7px;">Accredited by NAAC with "A" Grade(CGPA:3.04/4) Seetharampuram, Narsapur-534280</div>
-                <div style="font-size: 7px;">www.swarnandhra.edu.in Ph: 08814-240463/64/65/66, 09848368054</div>
-                <div style="margin-top: 4px; border-top: 1px solid #000; padding-top: 3px;">
-                    <div style="font-weight: bold; font-size: 9px;">Godavari Institute of Engg & Technology</div>
-                    <div style="font-size: 6px;">APPROVED BY AICTE | NAAC 'A' GRADE | ACCREDITED BY NBA | RECOGNIZED BY UGC, U/Sec. 2(f) & 12(B) | PERMANENTLY AFFILIATED TO JNTUK</div>
-                    <div style="font-size: 6px;">Automobile, CIVIL, CSE, ECE, EEE, IT, MECH., MINING<br>Petroleum, B.Pharm, Pharm.D M.Pharm, M.Tech, MBA, Diploma</div>
-                    <div style="font-size: 6px;">GIET Campus, Chaitanya Knowledge City, NH6, Rajahmundry, East Godavari Ph: 0883-2484828/3</div>
-                    <div style="font-size: 7px; font-weight: bold;">Counseling Code: GIER</div>
-                </div>
-            </div>
-            <div class="ad-box black" style="width: 22%;">
-                <div style="font-size: 9px; font-weight: bold;">BHARAT<br>UNIVERSITY (CHENNAI)</div>
-                <div style="font-size: 7px; margin-top: 2px;">awarded<br>INDIA'S No.1<br>Best Multi Stream Uni<br>at National Education<br>Excellence Award 2014</div>
-                <div style="font-size: 6px; margin-top: 2px;">B.Tech, B.Arch, M.Tech,<br>MBA, MCA, Ph.D, Ag, B.Sc</div>
-                <div style="font-size: 6px; margin-top: 2px;">No Donation 37,500 for sea</div>
-                <div class="phone" style="font-size: 7px; margin-top: 2px;">Ph: 9160902969<br>9177177756<br>9949476452</div>
+    <!-- Header -->
+    <div class="header">
+        <div class="sbi-logo">
+            <div style="width: 30px; height: 30px; background: #00a0e3; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 16px;">SBI</div>
+            <span class="sbi-text">SBI</span>
+        </div>
+        <div class="menu-btn">
+            <span>MENU</span>
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
-
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- Left Sidebar -->
-            <div class="left-sidebar">
-                <div class="ad-box admissions-box">
-                    <h2>ADMISSIONS<br>GUIDANCE</h2>
-                    <div style="text-align: center; font-size: 8px; font-weight: bold; margin-bottom: 4px;">All Over INDIA<br>Low Packages</div>
-                    <div class="courses-list">
-                        <div>DM, M.Ch., MDS,<br>MD, MS, DCH, DGO,<br>DMRD, DDVL<br>D.Ortho, DA, DO</div>
-                        <div style="margin-top: 4px;">☑ MBBS<br>Total Package 42L-95L</div>
-                        <div>☑ BDS, MDS</div>
-                        <div>☑ BAMS, BHMS,<br>☑ PHARM.D</div>
-                        <div>☑ B.PHARM, M.PHARM<br>☑ B.Ed, D.Ed(TTC),<br>☑ B.P.Ed, UG.P.Ed</div>
-                    </div>
-                </div>
-                
-                <div class="ad-box gowtham-box">
-                    <div style="font-size: 10px; font-weight: bold;">Gowtham</div>
-                    <div style="font-size: 7px;">Educational Consultancy</div>
-                    <div style="font-size: 6px; margin-top: 2px;">www.gcsgowtham.com<br>gcsgowtham@gmail.com</div>
-                    <div class="phone" style="margin-top: 4px; font-size: 9px;">9966880118<br>9703773222<br>9490788222</div>
-                </div>
-                
-                <div style="border: 1px solid #000; padding: 2px; font-size: 8px; text-align: center; font-weight: bold; writing-mode: vertical-rl; text-orientation: mixed; height: 150px; display: flex; align-items: center; justify-content: center;">
-                    neni<br>maiah<br>Colleges
-                </div>
+    </div>
+    
+    <!-- Notice Bar -->
+    <div class="notice-bar">
+        <div class="notice-left">
+            <span class="important">IMPORTANT NOTICE</span>
+            <span class="caution">CAUTION: FAKE SELECTION LETTERS/LISTS</span>
+        </div>
+        <div class="latest-ann">
+            <span>Latest Announcements</span>
+            <span>▼</span>
+        </div>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Title -->
+        <div class="title-section">
+            <h1>Recruitment of Probationary Officers</h1>
+            <h2>Advertisement No. CRPD/ PO/ 2021-22/18 dated 05.10.2021</h2>
+            <h3>Details of Marks Secured by the Candidate</h3>
+        </div>
+        
+        <!-- Candidate Information -->
+        <div class="candidate-info">
+            <div class="info-row two-col">
+                <div class="info-label">Name</div>
+                <div class="info-value">AGURU MANOJ KUMAR</div>
+                <div class="info-label">Roll No.</div>
+                <div class="info-value">3391000447</div>
             </div>
-
-            <!-- Center Results -->
-            <div class="center-content">
-                <!-- Top mini ads -->
-                <div class="top-header-ads">
-                    <div class="ad-box" style="flex: 1;">
-                        <div style="font-size: 8px; font-weight: bold;">Sri Mittapalli<br>College of Engg</div>
-                        <div style="font-size: 6px;">EAMCET CODE: MPLG<br>Branches:<br>• MECH • CSE<br>• CIVIL • ECE<br>• EEE</div>
-                        <div style="font-size: 6px;">NH-5, Guntur<br>Ph: 9000447117</div>
+            <div class="info-row two-col">
+                <div class="info-label">Category</div>
+                <div class="info-value">OBC</div>
+                <div class="info-label">Reg No.</div>
+                <div class="info-value">2080847139</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label" style="width: 25%; border-right: 1px solid #ccc;">Date of Birth</div>
+                <div class="info-value" style="width: 75%; border: none;">25-12-1998</div>
+            </div>
+        </div>
+        
+        <!-- Section A: Main Examination -->
+        <div class="section">
+            <div class="section-title">
+                <span>A. Main Examination Score(Out of 250)</span>
+                <div class="score-box">104.85</div>
+            </div>
+            <div class="subsection-title">Category Wise Main Exam Cut-off Marks for shortlisting for interviews</div>
+            
+            <table class="cutoff-table">
+                <tr>
+                    <th>SC</th>
+                    <th>ST</th>
+                    <th>OBC</th>
+                    <th>EWS</th>
+                    <th>GEN</th>
+                    <th>LD</th>
+                    <th>VI</th>
+                    <th>HI</th>
+                    <th>D & E</th>
+                </tr>
+                <tr>
+                    <td>77.32</td>
+                    <td>75.01</td>
+                    <td>86.54</td>
+                    <td>90.01</td>
+                    <td>94.85</td>
+                    <td>75.35</td>
+                    <td>97.72</td>
+                    <td>75.77</td>
+                    <td>75.17</td>
+                </tr>
+            </table>
+            
+            <div class="status-box qualified">
+                SHORTLISTED FOR INTERVIEW
+            </div>
+            
+            <div class="note">
+                Please note Section wise marks are not maintained and therefore not provided
+            </div>
+        </div>
+        
+        <!-- Section B: Interview -->
+        <div class="section">
+            <div class="section-title">
+                <span>B. Interview Score(Out of 50)</span>
+                <div class="score-box">37.00</div>
+            </div>
+            <div class="subsection-title">Category Wise Qualifying Marks for interview</div>
+            
+            <table class="cutoff-table">
+                <tr>
+                    <th>SC</th>
+                    <th>ST</th>
+                    <th>OBC</th>
+                    <th>EWS</th>
+                    <th>GEN</th>
+                    <th>LD</th>
+                    <th>VI</th>
+                    <th>HI</th>
+                    <th>D & E</th>
+                </tr>
+                <tr>
+                    <td>17.50</td>
+                    <td>17.50</td>
+                    <td>17.50</td>
+                    <td>20.00</td>
+                    <td>20.00</td>
+                    <td>17.50</td>
+                    <td>17.50</td>
+                    <td>17.50</td>
+                    <td>17.50</td>
+                </tr>
+            </table>
+            
+            <div class="status-box qualified">
+                QUALIFIED IN INTERVIEW
+            </div>
+        </div>
+        
+        <!-- Section C: Final Score -->
+        <div class="section">
+            <div class="section-title">
+                <span>C. Final Score(Total Normalised to 100)</span>
+                <div class="score-box">49.96</div>
+            </div>
+            
+            <div class="final-score-box">
+                <div class="score-breakdown">
+                    <div class="breakdown-row">
+                        <div class="breakdown-label">1. Your Main Exam Score Normalised to 75</div>
+                        <div class="breakdown-value">31.46</div>
                     </div>
-                    <div class="ad-box" style="flex: 2;">
-                        <div style="font-size: 9px; font-weight: bold;">SWARNANDHRA INSTITUTE OF ENGG & TECH</div>
-                        <div style="font-size: 6px;">Approved by AICTE,New Delhi & Affiliated to JNTUK-Kakinada</div>
-                        <div style="font-size: 6px;">Accredited by NAAC with "A" Grade(CGPA:3.04/4) Seetharampuram, Narsapur-534280</div>
-                        <div style="font-size: 6px;">www.swarnandhra.edu.in Ph: 08814-240463/64/65/66, 09848368054</div>
-                        <div style="margin-top: 3px; border-top: 1px solid #000; padding-top: 2px;">
-                            <div style="font-weight: bold; font-size: 8px;">Godavari Institute of Engg & Technology</div>
-                            <div style="font-size: 5px;">APPROVED BY AICTE | NAAC 'A' GRADE | ACCREDITED BY NBA | RECOGNIZED BY UGC</div>
-                            <div style="font-size: 5px;">Automobile, CIVIL, CSE, ECE, EEE, IT, MECH., MINING</div>
-                            <div style="font-size: 5px;">GIET Campus, Chaitanya Knowledge City, NH6, Rajahmundry Ph: 0883-2484828/3</div>
-                            <div style="font-size: 6px; font-weight: bold;">Counseling Code: GIER</div>
-                        </div>
-                    </div>
-                    <div class="ad-box black" style="flex: 1;">
-                        <div style="font-size: 8px; font-weight: bold;">BHARAT<br>UNIVERSITY</div>
-                        <div style="font-size: 6px;">INDIA'S No.1<br>Best Multi Stream Uni</div>
-                        <div style="font-size: 5px; margin-top: 2px;">B.Tech, B.Arch, M.Tech<br>MBA, MCA, Ph.D</div>
-                        <div style="font-size: 6px; margin-top: 2px;">Ph: 9160902969</div>
+                    <div class="breakdown-row">
+                        <div class="breakdown-label">2. Your Interview Score Normalised to 25</div>
+                        <div class="breakdown-value">18.50</div>
                     </div>
                 </div>
-
-                <div class="results-title">EAMCET - 2014 Marks</div>
                 
-                <table class="results-table">
+                <div class="subsection-title">Category Wise Cut-off Marks for Final Selection</div>
+                
+                <table class="cutoff-table">
                     <tr>
-                        <td>Hallticket No</td>
-                        <td>4508108</td>
+                        <th>SC</th>
+                        <th>ST</th>
+                        <th>OBC</th>
+                        <th>EWS</th>
+                        <th>GEN</th>
+                        <th>LD</th>
+                        <th>VI</th>
+                        <th>HI</th>
+                        <th>D & E</th>
                     </tr>
                     <tr>
-                        <td>Name</td>
-                        <td>AGURU MANOJ KUMAR</td>
-                    </tr>
-                    <tr>
-                        <td>Father Name</td>
-                        <td>AGURU MOHAN RAO</td>
-                    </tr>
-                    <tr>
-                        <td>Gender</td>
-                        <td>M</td>
-                    </tr>
-                    <tr>
-                        <td>Local Area</td>
-                        <td>AU</td>
-                    </tr>
-                    <tr>
-                        <td>Category</td>
-                        <td>BC-B</td>
-                    </tr>
-                    <tr>
-                        <td>Combined Score</td>
-                        <td>70.38</td>
-                    </tr>
-                    <tr>
-                        <td>Group Total</td>
-                        <td>587.00</td>
-                    </tr>
-                    <tr>
-                        <td>Group Max.</td>
-                        <td>600</td>
-                    </tr>
-                    <tr>
-                        <td>Inter Weightage</td>
-                        <td>24.45</td>
-                    </tr>
-                    <tr>
-                        <td>EAMCET Weightage</td>
-                        <td>45.93</td>
-                    </tr>
-                    <tr>
-                        <td>Mathematics</td>
-                        <td>32</td>
-                    </tr>
-                    <tr>
-                        <td>Physics</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>Chemistry</td>
-                        <td>36</td>
-                    </tr>
-                    <tr>
-                        <td>EAMCET Marks</td>
-                        <td>98</td>
-                    </tr>
-                    <tr>
-                        <td>Rank</td>
-                        <td>5289</td>
-                    </tr>
-                    <tr>
-                        <td>Local Rank</td>
-                        <td>161</td>
-                    </tr>
-                    <tr>
-                        <td>Result</td>
-                        <td>QUALIFIED IN EAMCET</td>
+                        <td>44.93</td>
+                        <td>41.55</td>
+                        <td>47.41</td>
+                        <td>47.94</td>
+                        <td>53.40</td>
+                        <td>41.64</td>
+                        <td>49.93</td>
+                        <td>41.59</td>
+                        <td>33.16</td>
                     </tr>
                 </table>
-            </div>
-
-            <!-- Right Sidebar -->
-            <div class="right-sidebar">
-                <div class="ad-box manabadi">
-                    <h3>MANABADI</h3>
-                    <div style="font-size: 6px; margin-bottom: 4px;">Consultancy Services</div>
-                    <div style="font-size: 6px;">Provide Admissions in<br>Under Management Quota<br>100 % Placement<br>Top Colleges & Universities</div>
-                    <div style="font-size: 7px; font-weight: bold; margin: 4px 0;">CSE, ECE, MECH<br>CIVIL, EEE, IT, Aero<br>E & I And MINING</div>
-                    <div style="margin: 4px 0;"><span class="free">Free</span> <span style="font-size: 6px;">Not Qualified<br>Admission in HYD</span></div>
-                    <div class="phone" style="font-size: 9px;">Ph : 9701531567<br>9030777444</div>
+                
+                <div class="merit-note">
+                    [Final Merit List is drawn in the basis of the 'Final Normalised Score' (out of 100)]
                 </div>
                 
-                <div class="ad-box manabadi">
-                    <h3>MANABADI</h3>
-                    <div style="font-size: 6px; margin-bottom: 4px;">Consultancy Services</div>
-                    <div style="font-size: 6px;">Provide Admissions in<br>Under Management Quota</div>
-                    <div style="font-size: 7px; font-weight: bold; margin: 4px 0;">B.PHARMA<br>PHARMA-D<br>AGBSC<br>BDS & MBBS</div>
-                    <div style="font-size: 6px; margin: 4px 0;">AP, TG, KARNATAKA</div>
-                    <div class="phone" style="font-size: 9px;">Ph : 9701531567<br>9030777444</div>
-                </div>
-                
-                <div class="ad-box" style="background: white; color: black; border: 1px solid #000;">
-                    <div style="font-size: 7px;">
-                        <div style="font-weight: bold;">BHARAT</div>
-                        <div style="font-size: 6px;">UNIVERSITY (CHENNAI)<br>awarded<br>INDIA'S No.1<br>Best Multi Stream Uni<br>at National Education<br>Excellence Award 2014</div>
-                        <div style="font-size: 5px; margin-top: 2px;">B.Tech, B.Arch, M.Tech<br>MBA, MCA, Ph.D, Ag, B.Sc</div>
-                        <div style="font-size: 5px;">No Donation 37,500 for sea</div>
-                        <div style="font-size: 6px; font-weight: bold; margin-top: 2px;">Ph: 9160902969<br>9177177756<br>9949476452</div>
-                    </div>
+                <div class="status-box selected">
+                    CONGRATULATIONS YOU ARE SELECTED
                 </div>
             </div>
         </div>
-
-        <!-- Bottom Ads -->
-        <div class="bottom-ads">
-            <div class="ad-box baba-box large-ad">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <div style="font-size: 20px;">◉</div>
-                    <div>
-                        <div style="font-size: 10px; font-weight: bold;">BABA INSTITUTE OF TECHNOLOGY AND SCIENCES</div>
-                        <div style="font-size: 7px;">Approved by AICTE, New Delhi & Affiliated to JNTUK, An ISO 9001:2008 Certified.</div>
-                        <div style="margin-top: 4px; font-size: 8px;">
-                            <span class="highlight">► Emerging as VIZAG'S NO.1 Engg College</span><br>
-                            <span class="highlight">► Generating University Toppers Since 2012</span><br>
-                            B.Tech : CIVIL, EEE, MECH, ECE, CSE<br>
-                            M.Tech : CAD/CAM & TE, SE, VLSI, CS, PEED
-                        </div>
-                    </div>
-                    <div style="text-align: right; font-size: 8px; margin-left: auto;">
-                        <div>EAMCET-ICET-PGECET Code: <b>BABA</b></div>
-                        <div>www.bitsvizag.com</div>
-                        <div>Ph: 7799885355/56/57/58</div>
-                        <div style="background: white; color: black; padding: 2px 6px; margin-top: 4px; font-weight: bold; display: inline-block;">100% PLACEMENT</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ad-box" style="width: 120px;">
-                <div style="font-size: 7px; text-align: center;">
-                    <div style="font-weight: bold; margin-bottom: 2px;">శాస్త్ర కళాశాల</div>
-                    <div style="font-weight: bold; font-size: 8px; margin-bottom: 2px;">SAASTRA COLLEGE</div>
-                    <div style="font-size: 6px;">Pharm.D, B.Pharm<br>M.Pharm, Nursing<br>MBA& MCA</div>
-                    <div style="font-size: 6px; margin-top: 2px;">EAMCET Code : SCON<br>ICET Code : SSTR<br>Nursing Code : BOLI</div>
-                    <div style="font-size: 5px; margin-top: 2px;">Inter MPC Students are<br>All Eligible for M.Pharm & Pharm D</div>
-                    <div style="font-size: 6px; font-weight: bold; margin-top: 2px;">Ph : 0861 2334433<br>8099920678<br>9441885915</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Row -->
-        <div style="display: flex; gap: 4px; margin-top: 4px;">
-            <div class="ad-box" style="width: 80px; font-size: 7px; text-align: center; writing-mode: vertical-rl; text-orientation: mixed; height: 100px; display: flex; align-items: center; justify-content: center;">
-                <div>neni<br>maiah<br>Colleges</div>
-            </div>
-            
-            <div class="ad-box baba-box" style="flex: 1;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <div style="font-size: 18px;">◉</div>
-                    <div>
-                        <div style="font-size: 9px; font-weight: bold;">BABA INSTITUTE OF TECHNOLOGY AND SCIENCES</div>
-                        <div style="font-size: 6px;">Approved by AICTE, New Delhi & Affiliated to JNTUK, An ISO 9001:2008 Certified.</div>
-                        <div style="margin-top: 3px; font-size: 7px;">
-                            <span class="highlight">► Emerging as VIZAG'S NO.1 Engg College</span><br>
-                            <span class="highlight">► Generating University Toppers Since 2012</span><br>
-                            B.Tech : CIVIL, EEE, MECH, ECE, CSE<br>
-                            M.Tech : CAD/CAM & TE, SE, VLSI, CS, PEED
-                        </div>
-                    </div>
-                    <div style="text-align: right; font-size: 7px; margin-left: auto;">
-                        <div>EAMCET-ICET-PGECET Code: <b>BABA</b></div>
-                        <div>www.bitsvizag.com</div>
-                        <div>Ph: 7799885355/56/57/58</div>
-                        <div style="background: white; color: black; padding: 2px 6px; margin-top: 4px; font-weight: bold; display: inline-block;">100% PLACEMENT</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ad-box" style="width: 140px; font-size: 6px;">
-                <div style="text-align: center; font-weight: bold; margin-bottom: 2px;">శాస్త్ర కళాశాల</div>
-                <div style="text-align: center; font-weight: bold; font-size: 8px; margin-bottom: 2px;">SAASTRA COLLEGE</div>
-                <div style="font-size: 6px;">Pharm.D, B.Pharm<br>M.Pharm, Nursing<br>MBA& MCA</div>
-                <div style="font-size: 6px; margin-top: 2px;">EAMCET Code : SCON<br>ICET Code : SSTR<br>Nursing Code : BOLI</div>
-                <div style="font-size: 5px; margin-top: 2px;">Inter MPC Students are<br>All Eligible for M.Pharm & Pharm D</div>
-                <div style="font-size: 6px; font-weight: bold; margin-top: 2px; text-align: center;">Ph : 0861 2334433<br>8099920678<br>9441885915</div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer-text">
-            <p>Result (Q => Qualified, NQ => Not Qualified) ; Gender (M => Male , F => Female)</p>
-            <p>Category (BA => BC-A, BB => BC-B, BC => BC-C, BD => BC-D )</p>
-            <p>Unspecified Local Area : (The number of Candidates who didn't specify their Local Area)</p>
-            <p>Local Area is based on the data provided by the candidates. Hence, any error in this information is not the responsibility of the Convener. This is only for an idea of your position in that category.</p>
-        </div>
+        
+        <button class="back-btn">Back</button>
     </div>
 </body>
 </html>
